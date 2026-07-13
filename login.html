@@ -390,14 +390,16 @@
         height: 20px;
         flex-shrink: 0;
       }
-      /* Totoong Google button: invisible pero nasa ibabaw, dito talaga tumatama ang click */
+      /* Totoong Google button: invisible pero nasa ibabaw, dito talaga tumatama ang click.
+         Walang laman ito sa HTML - pupunuin ng JS (google.accounts.id.renderButton)
+         gamit ang EXACT na width/height ng wrapper, para 100% covered ang custom button. */
       .gsi-overlay {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
-        opacity: 0;
+        opacity: 0.001; /* halos zero pero hindi eksaktong 0 - mas reliable sa ibang browsers */
         cursor: pointer;
         z-index: 2;
       }
@@ -566,15 +568,9 @@
 
           <div class="divider">OR</div>
 
-          <!-- Palitan ang data-client_id ng sarili mong Client ID mula sa Google Cloud Console -->
-          <div
-            id="g_id_onload"
-            data-client_id="327962705928-6jnjaqhim3ovhu4oi3v923d1sp56n8lr.apps.googleusercontent.com"
-            data-callback="handleGoogleLogin"
-          ></div>
-
-          <!-- Custom-styled Google button na naka-overlay sa totoong Google button -->
-          <div class="google-btn-wrap">
+          <!-- Custom-styled Google button na naka-overlay sa totoong Google button.
+               Walang laman ang gsi-overlay div - JS ang mag-render dito. -->
+          <div class="google-btn-wrap" id="googleWrapLogin">
             <button type="button" class="google-account-btn" tabindex="-1">
               <svg class="g-logo" viewBox="0 0 48 48">
                 <path
@@ -596,15 +592,7 @@
               </svg>
               <span class="g-text">Sign in with Google</span>
             </button>
-
-            <!-- Totoong Google button, invisible pero nakapatong sa custom button; -->
-            <!-- ang aktwal na click ng user ay direktang tumatama dito -->
-            <div
-              class="g_id_signin gsi-overlay"
-              data-type="standard"
-              data-width="400"
-              data-shape="rectangular"
-            ></div>
+            <div class="gsi-overlay" id="gsiOverlayLogin"></div>
           </div>
 
           <div class="switch-text">
@@ -732,7 +720,7 @@
 
           <div class="divider">OR</div>
 
-          <div class="google-btn-wrap">
+          <div class="google-btn-wrap" id="googleWrapRegister">
             <button type="button" class="google-account-btn" tabindex="-1">
               <svg class="g-logo" viewBox="0 0 48 48">
                 <path
@@ -754,13 +742,7 @@
               </svg>
               <span class="g-text">Sign up with Google</span>
             </button>
-
-            <div
-              class="g_id_signin gsi-overlay"
-              data-type="standard"
-              data-width="400"
-              data-shape="rectangular"
-            ></div>
+            <div class="gsi-overlay" id="gsiOverlayRegister"></div>
           </div>
 
           <div class="switch-text">
@@ -772,22 +754,33 @@
     </div>
 
     <script>
+      const GOOGLE_CLIENT_ID =
+        "327962705928-6jnjaqhim3ovhu4oi3v923d1sp56n8lr.apps.googleusercontent.com";
+
       function showPanel(name) {
         document.getElementById("login-panel").classList.remove("active");
         document.getElementById("register-panel").classList.remove("active");
         document.getElementById(name + "-panel").classList.add("active");
+        // I-resize ulit yung Google button pag lumipat ng panel, kasi
+        // walang tamang width ang mga fields habang naka-hide (display:none = 0 width).
+        renderGoogleButtons();
       }
+
       function togglePass(id, btn) {
         const input = document.getElementById(id);
         input.type = input.type === "password" ? "text" : "password";
       }
+
       function handleGoogleLogin(response) {
         const userData = parseJwt(response.credential);
         console.log(userData);
         alert(
           "Na-login gamit si: " + userData.name + " (" + userData.email + ")",
         );
+        // Dito mo ipapadala ang response.credential (JWT) sa backend mo
+        // para i-verify at gumawa ng session, hindi lang plain alert().
       }
+
       function parseJwt(token) {
         const base64Url = token.split(".")[1];
         const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -801,6 +794,46 @@
         );
         return JSON.parse(jsonPayload);
       }
+
+      let gsiInitialized = false;
+
+      function renderGoogleButtons() {
+        if (typeof google === "undefined" || !google.accounts) return;
+
+        if (!gsiInitialized) {
+          google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: handleGoogleLogin,
+          });
+          gsiInitialized = true;
+        }
+
+        renderInto("googleWrapLogin", "gsiOverlayLogin");
+        renderInto("googleWrapRegister", "gsiOverlayRegister");
+      }
+
+      function renderInto(wrapId, overlayId) {
+        const wrap = document.getElementById(wrapId);
+        const overlay = document.getElementById(overlayId);
+        if (!wrap || !overlay) return;
+
+        const width = Math.round(wrap.getBoundingClientRect().width);
+        if (!width) return; // hidden panel (display:none), laktawan muna
+
+        // Linisin muna bago mag-render ulit (iwas duplicate na iframe)
+        overlay.innerHTML = "";
+
+        google.accounts.id.renderButton(overlay, {
+          type: "standard",
+          theme: "outline",
+          size: "large",
+          shape: "rectangular",
+          width: width, // eksaktong laki ng wrapper - dito nakabatay ang covered click area
+        });
+      }
+
+      window.addEventListener("load", renderGoogleButtons);
+      window.addEventListener("resize", renderGoogleButtons);
     </script>
   </body>
 </html>
