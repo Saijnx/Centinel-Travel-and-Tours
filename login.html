@@ -15,7 +15,12 @@
         --gray-text: #8a94a3;
         --border: #e3e8ee;
       }
-      * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Arial, sans-serif; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
       body {
         min-height: 100vh;
         display: flex;
@@ -38,16 +43,32 @@
         min-height: 640px;
       }
 
-      .icon-svg { display:block; }
-      .icon-svg, .icon-left svg, .icon-right svg, .footer-strip svg, .avatar-icon svg, .logo-icon svg, .btn-primary svg {
-        stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+      .icon-svg {
+        display: block;
+      }
+      .icon-svg,
+      .icon-left svg,
+      .icon-right svg,
+      .footer-strip svg,
+      .avatar-icon svg,
+      .logo-icon svg,
+      .btn-primary svg {
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
 
       /* LEFT PANEL */
       .left {
         flex: 1;
         background:
-          linear-gradient(180deg, rgba(234, 243, 251, 0.65), rgba(234, 243, 251, 0.15)),
+          linear-gradient(
+            180deg,
+            rgba(234, 243, 251, 0.65),
+            rgba(234, 243, 251, 0.15)
+          ),
           url("https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=900&q=80")
             center/cover no-repeat;
         padding: 40px;
@@ -55,78 +76,312 @@
         display: flex;
         flex-direction: column;
       }
-      .logo { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 6px;
+      }
       .logo-icon {
-        width: 70px; height: 70px; border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
         background: var(--white);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         color: var(--blue);
       }
-      .logo-icon svg { width: 34px; height: 34px; }
-      .logo-text h1 { color: var(--navy); font-size: 34px; letter-spacing: 1px; }
-      .logo-text .sub { color: var(--blue); font-size: 20px; font-weight: 600; letter-spacing: 1px; }
-      .logo-text .tag { font-size: 11px; letter-spacing: 3px; color: var(--navy); margin-top: 4px; }
+      .logo-icon svg {
+        width: 34px;
+        height: 34px;
+      }
+      .logo-text h1 {
+        color: var(--navy);
+        font-size: 34px;
+        letter-spacing: 1px;
+      }
+      .logo-text .sub {
+        color: var(--blue);
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .logo-text .tag {
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--navy);
+        margin-top: 4px;
+      }
 
-      .tagline { margin-top: 20px; }
-      .tagline .script { font-family: "Brush Script MT", cursive; font-style: italic; color: var(--blue); font-size: 22px; }
-      .tagline .bold { font-size: 26px; font-weight: 800; color: var(--navy); border-bottom: 3px solid var(--blue); display: inline-block; padding-bottom: 4px; }
+      .tagline {
+        margin-top: 20px;
+      }
+      .tagline .script {
+        font-family: "Brush Script MT", cursive;
+        font-style: italic;
+        color: var(--blue);
+        font-size: 22px;
+      }
+      .tagline .bold {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--navy);
+        border-bottom: 3px solid var(--blue);
+        display: inline-block;
+        padding-bottom: 4px;
+      }
 
-      .photos { flex: 1; position: relative; margin-top: 20px; }
-      .polaroid { position: absolute; background: var(--white); padding: 8px 8px 24px; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); border-radius: 2px; }
-      .polaroid img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 1px; }
-      .p1 { width: 150px; height: 180px; left: 10%; top: 10%; transform: rotate(-4deg); }
-      .p2 { width: 150px; height: 130px; right: 5%; top: 0; transform: rotate(5deg); }
-      .p3 { width: 150px; height: 120px; left: 30%; bottom: 0; transform: rotate(-2deg); }
+      .photos {
+        flex: 1;
+        position: relative;
+        margin-top: 20px;
+      }
+      .polaroid {
+        position: absolute;
+        background: var(--white);
+        padding: 8px 8px 24px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        border-radius: 2px;
+      }
+      .polaroid img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1px;
+      }
+      .p1 {
+        width: 150px;
+        height: 180px;
+        left: 10%;
+        top: 10%;
+        transform: rotate(-4deg);
+      }
+      .p2 {
+        width: 150px;
+        height: 130px;
+        right: 5%;
+        top: 0;
+        transform: rotate(5deg);
+      }
+      .p3 {
+        width: 150px;
+        height: 120px;
+        left: 30%;
+        bottom: 0;
+        transform: rotate(-2deg);
+      }
 
-      .footer-strip { background: var(--navy); margin: 0 -40px -40px; padding: 22px 40px; display: flex; justify-content: space-around; color: var(--white); }
-      .footer-strip div { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.5px; text-align: center; }
-      .footer-strip svg { width: 22px; height: 22px; }
+      .footer-strip {
+        background: var(--navy);
+        margin: 0 -40px -40px;
+        padding: 22px 40px;
+        display: flex;
+        justify-content: space-around;
+        color: var(--white);
+      }
+      .footer-strip div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+      .footer-strip svg {
+        width: 22px;
+        height: 22px;
+      }
 
       /* RIGHT PANEL */
-      .right { flex: 1; padding: 60px 60px; display: flex; flex-direction: column; justify-content: center; }
+      .right {
+        flex: 1;
+        padding: 60px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
       .avatar-icon {
-        width: 90px; height: 90px; border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
         border: 3px solid var(--blue);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: var(--blue);
         margin: 0 auto 20px;
       }
-      .avatar-icon svg { width: 40px; height: 40px; }
-      .right h2 { text-align: center; color: var(--navy); font-size: 28px; margin-bottom: 8px; }
-      .right p.desc { text-align: center; color: var(--gray-text); font-size: 14px; margin-bottom: 30px; line-height: 1.5; }
+      .avatar-icon svg {
+        width: 40px;
+        height: 40px;
+      }
+      .right h2 {
+        text-align: center;
+        color: var(--navy);
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      .right p.desc {
+        text-align: center;
+        color: var(--gray-text);
+        font-size: 14px;
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
 
-      .field { position: relative; margin-bottom: 16px; }
-      .field input, .field select { width: 100%; padding: 14px 44px; border: 1px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; color: #333; background: var(--white); }
-      .field input:focus, .field select:focus { border-color: var(--blue); }
-      .field .icon-left { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-text); width:18px; height:18px; }
-      .field .icon-right { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-text); cursor: pointer; background: none; border: none; width:20px; height:20px; padding:0; }
+      .field {
+        position: relative;
+        margin-bottom: 16px;
+      }
+      .field input,
+      .field select {
+        width: 100%;
+        padding: 14px 44px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+        color: #333;
+        background: var(--white);
+      }
+      .field input:focus,
+      .field select:focus {
+        border-color: var(--blue);
+      }
+      .field .icon-left {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gray-text);
+        width: 18px;
+        height: 18px;
+      }
+      .field .icon-right {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gray-text);
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+      }
 
-      .row-2 { display: flex; gap: 14px; }
-      .row-2 .field { flex: 1; }
+      .row-2 {
+        display: flex;
+        gap: 14px;
+      }
+      .row-2 .field {
+        flex: 1;
+      }
 
-      .options-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 20px; color: #555; }
-      .options-row a { color: var(--blue); text-decoration: none; font-weight: 600; }
-      .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; margin-bottom: 20px; }
-      .checkbox-row a { color: var(--blue); text-decoration: none; font-weight: 600; }
+      .options-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin-bottom: 20px;
+        color: #555;
+      }
+      .options-row a {
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 20px;
+      }
+      .checkbox-row a {
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 600;
+      }
 
-      .btn-primary { width: 100%; padding: 15px; border: none; border-radius: 10px; background: var(--blue); color: var(--white); font-size: 15px; font-weight: 700; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; }
-      .btn-primary:hover { background: var(--navy); }
-      .btn-primary svg { width: 18px; height: 18px; stroke: var(--white); }
+      .btn-primary {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background: var(--blue);
+        color: var(--white);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--navy);
+      }
+      .btn-primary svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--white);
+      }
 
-      .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--gray-text); font-size: 12px; }
-      .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+        color: var(--gray-text);
+        font-size: 12px;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
 
-      .switch-text { text-align: center; margin-top: 22px; font-size: 13px; color: #555; }
-      .switch-text a { color: var(--blue); font-weight: 700; text-decoration: none; cursor: pointer; }
+      .switch-text {
+        text-align: center;
+        margin-top: 22px;
+        font-size: 13px;
+        color: #555;
+      }
+      .switch-text a {
+        color: var(--blue);
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-      .form-panel { display: none; }
-      .form-panel.active { display: block; }
+      .form-panel {
+        display: none;
+      }
+      .form-panel.active {
+        display: block;
+      }
 
       @media (max-width: 860px) {
-        .card { flex-direction: column; }
-        .left { min-height: 320px; }
-        .right { padding: 40px 30px; }
+        .card {
+          flex-direction: column;
+        }
+        .left {
+          min-height: 320px;
+        }
+        .right {
+          padding: 40px 30px;
+        }
       }
     </style>
   </head>
@@ -136,7 +391,10 @@
       <div class="left">
         <div class="logo">
           <div class="logo-icon">
-            <svg viewBox="0 0 24 24" class="icon-svg"><path d="M2 12l19-8-6 19-3-7-7-3z"/><path d="M15 15l4 4"/></svg>
+            <svg viewBox="0 0 24 24" class="icon-svg">
+              <path d="M2 12l19-8-6 19-3-7-7-3z" />
+              <path d="M15 15l4 4" />
+            </svg>
           </div>
           <div class="logo-text">
             <h1>BSIT</h1>
@@ -152,27 +410,51 @@
 
         <div class="photos">
           <div class="polaroid p1">
-            <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=300&q=80" alt="hiker" />
+            <img
+              src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=300&q=80"
+              alt="hiker"
+            />
           </div>
           <div class="polaroid p2">
-            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=300&q=80" alt="city" />
+            <img
+              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=300&q=80"
+              alt="city"
+            />
           </div>
           <div class="polaroid p3">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=300&q=80" alt="plane wing" />
+            <img
+              src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=300&q=80"
+              alt="plane wing"
+            />
           </div>
         </div>
 
         <div class="footer-strip">
           <div>
-            <svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-11.5A7 7 0 1 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21s7-6.5 7-11.5A7 7 0 1 0 5 9.5C5 14.5 12 21 12 21z"
+              />
+              <circle cx="12" cy="9.5" r="2.3" />
+            </svg>
             GREAT<br />DESTINATIONS
           </div>
           <div>
-            <svg viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"
+              />
+              <circle cx="12" cy="13.5" r="3.5" />
+            </svg>
             MEMORABLE<br />EXPERIENCES
           </div>
           <div>
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path
+                d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"
+              />
+            </svg>
             JOURNEYS THAT<br />INSPIRE
           </div>
         </div>
@@ -182,20 +464,36 @@
       <div class="right">
         <div id="login-panel" class="form-panel active">
           <div class="avatar-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
+            </svg>
           </div>
           <h2>Welcome Back!</h2>
-          <p class="desc">Login to your account<br />and continue your journey with us.</p>
+          <p class="desc">
+            Login to your account<br />and continue your journey with us.
+          </p>
 
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg
+            ></span>
             <input type="text" placeholder="Email or Username" />
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <rect x="5" y="11" width="14" height="9" rx="2" />
+                <path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg
+            ></span>
             <input type="password" id="loginPass" placeholder="Password" />
             <button class="icon-right" onclick="togglePass('loginPass', this)">
-              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
             </button>
           </div>
 
@@ -207,7 +505,7 @@
           </div>
 
           <button class="btn-primary">
-            <svg viewBox="0 0 24 24"><path d="M2 12l19-8-6 19-3-7-7-3z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M2 12l19-8-6 19-3-7-7-3z" /></svg>
             LOGIN
           </button>
 
@@ -219,7 +517,12 @@
             data-client_id="327962705928-6jnjaqhim3ovhu4oi3v923d1sp56n8lr.apps.googleusercontent.com"
             data-callback="handleGoogleLogin"
           ></div>
-          <div class="g_id_signin" data-type="standard" data-width="330" data-shape="rectangular"></div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-width="330"
+            data-shape="rectangular"
+          ></div>
 
           <div class="switch-text">
             Don't have an account?
@@ -230,49 +533,99 @@
         <!-- RIGHT SIDE : REGISTER -->
         <div id="register-panel" class="form-panel">
           <div class="avatar-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
+            </svg>
           </div>
           <h2>Create Your Account</h2>
-          <p class="desc">Join BSIT Travel and Tours<br />and start your adventure with us!</p>
+          <p class="desc">
+            Join BSIT Travel and Tours<br />and start your adventure with us!
+          </p>
 
           <div class="row-2">
             <div class="field">
-              <span class="icon-left"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+              <span class="icon-left"
+                ><svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg
+              ></span>
               <input type="text" placeholder="First Name" />
             </div>
             <div class="field">
-              <span class="icon-left"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+              <span class="icon-left"
+                ><svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg
+              ></span>
               <input type="text" placeholder="Last Name" />
             </div>
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" /></svg
+            ></span>
             <input type="email" placeholder="Email Address" />
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" /></svg
+            ></span>
             <input type="text" placeholder="Username" />
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <rect x="5" y="11" width="14" height="9" rx="2" />
+                <path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg
+            ></span>
             <input type="password" id="regPass" placeholder="Password" />
             <button class="icon-right" onclick="togglePass('regPass', this)">
-              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
             </button>
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
-            <input type="password" id="regPass2" placeholder="Confirm Password" />
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <rect x="5" y="11" width="14" height="9" rx="2" />
+                <path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg
+            ></span>
+            <input
+              type="password"
+              id="regPass2"
+              placeholder="Confirm Password"
+            />
             <button class="icon-right" onclick="togglePass('regPass2', this)">
-              <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
             </button>
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2z"
+                /></svg
+            ></span>
             <input type="text" placeholder="Phone Number" />
           </div>
           <div class="field">
-            <span class="icon-left"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg></span>
+            <span class="icon-left"
+              ><svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"
+                /></svg
+            ></span>
             <select>
               <option>Country</option>
               <option>Philippines</option>
@@ -283,17 +636,25 @@
 
           <div class="checkbox-row">
             <input type="checkbox" />
-            <span>I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></span>
+            <span
+              >I agree to the <a href="#">Terms and Conditions</a> and
+              <a href="#">Privacy Policy</a></span
+            >
           </div>
 
           <button class="btn-primary">
-            <svg viewBox="0 0 24 24"><path d="M2 12l19-8-6 19-3-7-7-3z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M2 12l19-8-6 19-3-7-7-3z" /></svg>
             REGISTER
           </button>
 
           <div class="divider">OR</div>
 
-          <div class="g_id_signin" data-type="standard" data-width="330" data-shape="rectangular"></div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-width="330"
+            data-shape="rectangular"
+          ></div>
 
           <div class="switch-text">
             Already have an account?
@@ -316,15 +677,20 @@
       function handleGoogleLogin(response) {
         const userData = parseJwt(response.credential);
         console.log(userData);
-        alert("Na-login gamit si: " + userData.name + " (" + userData.email + ")");
+        alert(
+          "Na-login gamit si: " + userData.name + " (" + userData.email + ")",
+        );
       }
       function parseJwt(token) {
         const base64Url = token.split(".")[1];
         const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
         const jsonPayload = decodeURIComponent(
-          atob(base64).split("").map(function (c) {
-            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-          }).join(""),
+          atob(base64)
+            .split("")
+            .map(function (c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join(""),
         );
         return JSON.parse(jsonPayload);
       }
