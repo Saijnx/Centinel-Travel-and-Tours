@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BSIT Travel & Tours - Login</title>
+    <!-- 1. Ito yung script na nagpapagana ng Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
       :root {
         --navy: #0d3b73;
@@ -445,10 +447,18 @@
 
           <div class="divider">OR</div>
 
-          <button class="btn-google" onclick="loginWithGoogle()">
-            <span style="font-weight: 800; color: #4285f4">G</span> Login with
-            Google
-          </button>
+          <!-- 2. Palitan mo PASTE_CLIENT_ID_MO_DITO ng Client ID mo mula sa Google Cloud Console -->
+          <div
+            id="g_id_onload"
+            data-client_id="327962705928-6jnjaqhim3ovhu4oi3v923d1sp56n8lr.apps.googleusercontent.com"
+            data-callback="handleGoogleLogin"
+          ></div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-width="330"
+            data-shape="rectangular"
+          ></div>
 
           <div class="switch-text">
             Don't have an account?
@@ -528,10 +538,13 @@
 
           <div class="divider">OR</div>
 
-          <button class="btn-google" onclick="loginWithGoogle()">
-            <span style="font-weight: 800; color: #4285f4">G</span> Sign up with
-            Google
-          </button>
+          <!-- Same button, pwede paulit-ulitin dahil parehong data-callback lang ang tatawagin -->
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-width="330"
+            data-shape="rectangular"
+          ></div>
 
           <div class="switch-text">
             Already have an account?
@@ -551,10 +564,34 @@
         const input = document.getElementById(id);
         input.type = input.type === "password" ? "text" : "password";
       }
-      function loginWithGoogle() {
+      // 3. Ito yung function na tinatawag ng Google pagkatapos pumili ng account ang user
+      function handleGoogleLogin(response) {
+        // response.credential = JWT token na galing sa Google, dito nakapaloob yung info ng user
+        const userData = parseJwt(response.credential);
+        console.log(userData);
+        // userData.name, userData.email, userData.picture ang makukuha mo dito
+
+        // TODO: dito mo ipapadala yung userData papunta sa backend/server mo
+        // hal: fetch('/api/google-login', { method:'POST', body: JSON.stringify(userData) })
+
         alert(
-          "Dito mo ilalagay ang Google OAuth logic. Tignan ang paliwanag sa chat.",
+          "Na-login gamit si: " + userData.name + " (" + userData.email + ")",
         );
+      }
+
+      // Simpleng function para i-decode yung JWT token (walang library, plain JS lang)
+      function parseJwt(token) {
+        const base64Url = token.split(".")[1];
+        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        const jsonPayload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map(function (c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join(""),
+        );
+        return JSON.parse(jsonPayload);
       }
     </script>
   </body>
