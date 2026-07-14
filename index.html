@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Centinel HR — Performance &amp; Development</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=Moontime&display=swap"
@@ -53,8 +54,6 @@
       .font-script {
         font-family: "Moontime", cursive;
       }
-
-      /* Background layer — a generated tropical scene in the brand palette. */
       .app-bg {
         position: fixed;
         inset: 0;
@@ -67,7 +66,7 @@
         inset: -3%;
         width: 106%;
         height: 106%;
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIHNsaWNlIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJza3kiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjZGVhZmIiLz4KICAgIDxzdG9wIG9mZnNldD0iMzUlIiBzdG9wLWNvbG9yPSIjOGZjZGYwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzNmYTRlMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmY5NGRjIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNlYSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFkNmZhOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiMyZjk0ZGMiLz4KICAgIDxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjNWZjNGQ2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjZGVmZjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCBpZD0ic2FuZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YzZTZjOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZThkNmE4Ii8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9InN1biIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2ZmZjdlMCIgc3RvcC1vcGFjaXR5PSIwLjM1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmY3ZTAiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPGZpbHRlciBpZD0iYmx1ckJpZyIgeD0iLTUwJSIgeT0iLTUwJSIgd2lkdGg9IjIwMCUiIGhlaWdodD0iMjAwJSI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMzUiLz48L2ZpbHRlcj4KICA8ZmlsdGVyIGlkPSJibHVyTWVkIiB4PSItNTAlIiB5PSItNTAlIiB3aWR0aD0iMjAwJSIgaGVpZ2h0PSIyMDAlIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxNCIvPjwvZmlsdGVyPgogIDxmaWx0ZXIgaWQ9ImJsdXJTb2Z0IiB4PSItNTAlIiB5PSItNTAlIiB3aWR0aD0iMjAwJSIgaGVpZ2h0PSIyMDAlIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI2Ii8+PC9maWx0ZXI+CjwvZGVmcz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjE5MjAiIGhlaWdodD0iNjY5LjYiIGZpbGw9InVybCgjc2t5KSIvPgo8Y2lyY2xlIGN4PSIxNDk3LjYwMDAwMDAwMDAwMDEiIGN5PSIyMzcuNiIgcj0iMjYwIiBmaWxsPSJ1cmwoI3N1bikiLz4KPGVsbGlwc2UgY3g9IjMwMCIgY3k9IjE1MCIgcng9IjIyMCIgcnk9IjU1IiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjUiIGZpbHRlcj0idXJsKCNibHVyQmlnKSIvPgo8ZWxsaXBzZSBjeD0iNjUwIiBjeT0iMjMwIiByeD0iMTgwIiByeT0iNDAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNCIgZmlsdGVyPSJ1cmwoI2JsdXJCaWcpIi8+CjxlbGxpcHNlIGN4PSIxNDAwIiBjeT0iMTIwIiByeD0iMjYwIiByeT0iNjAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNDUiIGZpbHRlcj0idXJsKCNibHVyQmlnKSIvPgo8ZWxsaXBzZSBjeD0iMTA1MCIgY3k9IjkwIiByeD0iMTUwIiByeT0iMzUiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMzUiIGZpbHRlcj0idXJsKCNibHVyQmlnKSIvPgo8cmVjdCB4PSIwIiB5PSI1OTQuMCIgd2lkdGg9IjE5MjAiIGhlaWdodD0iMzI0LjAiIGZpbGw9InVybCgjc2VhKSIvPgo8cmVjdCB4PSIwIiB5PSI1NzQuMCIgd2lkdGg9IjE5MjAiIGhlaWdodD0iNjAiIGZpbGw9IiNiZmU2ZjIiIG9wYWNpdHk9IjAuNCIgZmlsdGVyPSJ1cmwoI2JsdXJNZWQpIi8+CjxyZWN0IHg9IjAiIHk9IjY0OC4wIiB3aWR0aD0iMTkyMCIgaGVpZ2h0PSI2IiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjI1IiBmaWx0ZXI9InVybCgjYmx1clNvZnQpIi8+CjxyZWN0IHg9IjAiIHk9IjcxMi44MDAwMDAwMDAwMDAxIiB3aWR0aD0iMTkyMCIgaGVpZ2h0PSI2IiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIiBmaWx0ZXI9InVybCgjYmx1clNvZnQpIi8+CjxyZWN0IHg9IjAiIHk9Ijc3Ny42IiB3aWR0aD0iMTkyMCIgaGVpZ2h0PSI2IiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIiIGZpbHRlcj0idXJsKCNibHVyU29mdCkiLz4KPHJlY3QgeD0iMCIgeT0iODQyLjQiIHdpZHRoPSIxOTIwIiBoZWlnaHQ9IjYiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMTgiIGZpbHRlcj0idXJsKCNibHVyU29mdCkiLz4KPHBhdGggZD0iTSAwIDg2NC4wIFEgOTYwLjAgNzc3LjYgMTkyMCA4ODUuNTk5OTk5OTk5OTk5OSBMIDE5MjAgMTA4MCBMIDAgMTA4MCBaIiBmaWxsPSJ1cmwoI3NhbmQpIi8+CjxwYXRoIGQ9Ik0gMCA4NjQuMCBRIDk2MC4wIDc3Ny42IDE5MjAgODg1LjU5OTk5OTk5OTk5OTkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxMCIgb3BhY2l0eT0iMC41IiBmaWx0ZXI9InVybCgjYmx1ck1lZCkiLz4KPGcgb3BhY2l0eT0iMC41IiBmaWx0ZXI9InVybCgjYmx1clNvZnQpIj4KICA8cmVjdCB4PSItNDAiIHk9IjkyOC44IiB3aWR0aD0iNDIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMmExZDEyIiBvcGFjaXR5PSIwLjM1IiB0cmFuc2Zvcm09InJvdGF0ZSgtMyAwIDkyOC44KSIvPgogIDxyZWN0IHg9Ii0yMCIgeT0iOTcyLjAiIHdpZHRoPSIzODAiIGhlaWdodD0iMTIiIGZpbGw9IiMyYTFkMTIiIG9wYWNpdHk9IjAuMyIgdHJhbnNmb3JtPSJyb3RhdGUoLTIgMCA5NzIuMCkiLz4KPC9nPgo8ZyBvcGFjaXR5PSIwLjkyIj48cGF0aCBkPSJNIC00MCAtMjAgQyAxMTYuMjU4MDY3MjI3NDk4MDIgNDQuODc3MzYzMzQzMjM2ODcgMzI3LjU0OTk2MDQzOTA0MzMzIDYuNDcwOTc3MjA3NDY4NTAxIDQ3OC45OTM2ODU4Mzc0MzM2NSAtMTExLjUxMjU4OTYzMDQ3MjI5IEMgMzE5LjA0MTE5OTczMzM2MzcgLTQxLjc4NDYwMjY5MDEyOTY5IDk0LjM3ODM5Njg0MTQ2NDggLTc5LjIwODQxMzUzNjMwMTM1IC00MCAtMjAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIC00MCAtMjAgQyAxMTcuMjczODI0ODgxNTgxMzggMTEwLjI4MzQyOTcyODA3MTUyIDM4MC4wNzk0OTkzMjQxMTQ0IDE2OS44NzYyNzE2MjUzNjA0NiA1NjcuMTkxMTg1NDk0NjQxOSAxMDUuMzc0ODk0ODQ1ODYzNTEgQyAzODkuOTg4MTYwMzY4Mzg0MjMgMTIxLjg4ODU4MTE1ODg0ODQ0IDE0Mi43NTMyMzg5OTU0MTgxNCAtMTMuMTEzNDg4NjE0Mzg3OTU0IC00MCAtMjAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIC00MCAtMjAgQyA4Ni4zNDgxOTA5Mjc0MzYwMSAxNzUuNjYxOTIxMzc3NjA0NTMgMzQ4Ljk1NTE3MTQwMjAwNzEgMzUxLjg0MjE5ODAwMDE1NTQ2IDUzNC44ODMwNTkwOTI0ODg1IDM1OC4xMDY1MzYwODIwNjY0IEMgMzc1Ljg4MTExMTMyNzQ3NjYgMzEwLjkwMzI5NTI0MDkyMTYgMTU1LjU4NjMyMjE2NDM1NzU3IDcwLjM5MDQ1NzEzOTU3NDUgLTQwIC0yMCBaIiBmaWxsPSIjMGQyYTFhIiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gLTQwIC0yMCBDIDIyLjkwMjIyMDk2MjkxNjM3NCAyMTguMTcyODI5NjExOTcwMjYgMjI2LjIwMjc3NDI5NzcyNjgyIDQ5Mi43Mjk0MDc5OTUyMzY0NCAzNjguOTU5OTk5MTE4Mjk1OSA1NjQuMDU1NDA3NTc4MDUxMSBDIDI2Ni4zNDEyMjQ0Njc4ODc0IDQ2NC42MjQxNjI2MTQwMzUyIDEyNi4xMTUzNzg1NDMzMjkzNCAxNDUuOTAyMTk4NjMxNzM4NDMgLTQwIC0yMCBaIiBmaWxsPSIjMGQyYTFhIiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gLTQwIC0yMCBDIC01Ni44NzA3NzI4ODk0NjkzOCAyMTkuMTU0NTE2NjQyNDAwOTUgNDcuMjM4MDM1NTYzNDQzMTA2IDU0MS4wMjE2NTQyNzEzMjI2IDExOC42ODIzMzU1NjA5MjY4NCA2NDkuNTMzNDIwMTA3MjAxMSBDIDk0LjkxNzIzNDIyMTg1NDQ3IDUyOS43MjE0NzY2MDQ5NDMxIDY1LjczMjg4MDgwMzU4ODQzIDE5MC4wOTY5MTY5Mjg4NTM1IC00MCAtMjAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIC00MCAtMjAgQyAtMTI3LjQ5NDk5NDAwNjMzNzU1IDE3Ni4xMTYzNjEzMjEyOTU0NCAtMTI3LjE0MTc0NzA4NDU3ODI2IDQ4My45ODY4NDA1OTExMDIzNSAtMTI5Ljg1Nzc1Mjc3MDQ5MzAyIDU5My40NTM4MTU5MjAxODU1IEMgLTc4LjY1OTEwNjc5NDExMTk5IDQ5MS4wODg1MDE2OTcxNTc0IC0yLjgyNTM0NzU0NTEzODU1NTUgMTk0LjM3Nzc3NTU5NDAwODUgLTQwIC0yMCBaIiBmaWxsPSIjMGQyYTFhIiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gLTQwIC0yMCBDIC0xNjguMzM5NjAwNDM4NDE5NiAxMDQuNzQ4NzA4NTgyNDMxNzkgLTI0NS42Njc2MjIzOTI3MTg2NCAzNTMuNjI4NzcxNDU2MDc5NCAtMzAzLjQ5OTk5OTk5OTk5OTkgNDM2LjM5NTM4Nzc5NDM5OTIgQyAtMjAzLjIzMjM3NzYwNzI4MTE3IDM3OC4xMjg3NzE0NTYwNzk0IC01OS4yMjAzOTk1NjE1ODAzNCAxNjcuNzQ4NzA4NTgyNDMxNzYgLTQwIC0yMCBaIiBmaWxsPSIjMGQyYTFhIiBvcGFjaXR5PSIxIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjc1Ij48cGF0aCBkPSJNIC02MCAtNjAgQyA2My43NjAwMDAwMDAwMDAwMDUgMTMuMzY3OTk5OTk5OTk5OTk5IDI0OS4zOTk5OTk5OTk5OTk5OCAxNC45NDIgMzgyLjAgLTYwLjAgQyAyNDkuMzk5OTk5OTk5OTk5OTggLTIzLjU1OCA2My43NjAwMDAwMDAwMDAwMDUgLTg1LjYzMiAtNjAgLTYwIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAtNjAgLTYwIEMgNTQuMzE2NDk3MjI0NTE3MTY0IDg1LjEzOTQ3NTY4NDE3MzIgMjc0LjA0Mzk3MzE0NDM1Mzg2IDIwNS4xODUyNzkyMjI1MjI4NyA0MjkuOTAzNzYyNzg0NDY5IDE5NS4wMjc3NTY4NDY5MTMzOCBDIDI5MS44MjEyOTQ3NTM5MDI3IDE3MS4wMzUzNjIxNDUxNjEzNCAxMDAuMDI5NjA5OTM0Nzg1NTEgLTIuNjc0NTk2ODAwNDcwNzM4IC02MCAtNjAgWiIgZmlsbD0iIzE3M2YyNyIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIC02MCAtNjAgQyAtNC41MDgzODc2ODk2ODU5MTEgMTM3Ljg0Mjg1MTg5NTEyNTYgMTY0LjMzMDQxOTQwMzk4NDgyIDM2OS4yODYzOTIxMzkxMjk2IDI4Mi45OTg3MDg5Mzc5MjU2IDQyOS44NTI5MjI0ODQ4MTcxIEMgMTk1Ljg2Nzc3MzEwOTExMSAzNDcuMjAzNjk5MzM5NjE0MzMgNzYuNTg3NjY0Njk0OTI0MjkgODEuMDU4Nzg0Njk2MzcyMDIgLTYwIC02MCBaIiBmaWxsPSIjMTczZjI3IiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gLTYwIC02MCBDIC04OC44OTExMTE3NDY0Mzk4OSAxMjkuNjA5MTE2NjQ0NzQxODUgLTI4LjYyMTc5MTM1MjUzNjU1IDM5NS40MTIwMjY2MDQwNzMzIDEyLjA5MDc0NjA0MTI5ODk5OSA0ODcuNTgzNTgwNzMyNjIwNyBDIDkuNTQ4ODM1ODEwMzU1MTQ3IDM5MC4zODY3NjgyMDM2MDEyNiA5LjI2MTkyOTUyOTU2NzM0IDExNi42ODcwMjM2MTQ5NTY3MyAtNjAgLTYwIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAtNjAgLTYwIEMgLTE0OC44NDMxOTc2NjY4ODcyMiA2My4yMzQzNjE2NTM4NDM0MiAtMTgzLjkxMDExNTI5NTA5MDYzIDI3OS44NDkwMDkxMTIxNDA5IC0yMTEuMTcyOTAzMzQ5OTQ1NTkgMzU1LjM0NDEzODM4NzM3MTUgQyAtMTQ3LjczMTk0OTM5NDgzMzE4IDI5My4wMTY3ODQ2MzAxNzkxMyAtNTUuODEzNjI4MjA5MDgyMjggOTcuMDk0MzU1ODQzMDg0NjMgLTYwIC02MCBaIiBmaWxsPSIjMTczZjI3IiBvcGFjaXR5PSIxIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjkyIj48cGF0aCBkPSJNIDE5NjAgLTEwIEMgMTk4MC4wNDE1NTM4MzQ3Njg0IDE4My42ODg5ODk1MDQ0NDU3MSAyMTI4LjU3NjE1OTgyNDYzMiA0MDAuOTI2NDczNzYxMTE0MiAyMjMyLjAgNDYxLjExNzgxOTY1ODczNDYgQyAyMTcyLjIyMzg0MDE3NTM2OCAzNzUuNzI2NDczNzYxMTE0MTYgMjA5Mi4yNzg0NDYxNjUyMzIgMTE4Ljg4ODk4OTUwNDQ0NTcgMTk2MCAtMTAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIDE5NjAgLTEwIEMgMTkyMS44NTU5NzEwMDc4MTM0IDIxMS4yNTk1MjYxMTY4MTQ4NyAxOTk5Ljk5NTU0MzY3NzQwNjkgNTE3LjU2MjEzNjkzODgwNTcgMjA1Mi43NTYzODk5NTY2MzggNjIzLjI0MjY0ODY5MTgwNDQgQyAyMDQ5Ljg2MzQwMjI2MTg4NjcgNTEwLjI1NzU3MTIyOTcyMDQ0IDIwNTAuMDg3NjA3MzY3OTAzNyAxOTIuNDc2MzU3MTUwNTk1NjcgMTk2MCAtMTAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIDE5NjAgLTEwIEMgMTg1MS4wODIzNzg2MjQzMDE2IDIwNi45Mjc3OTkyMjU1Njk1NyAxODIwLjgxODQ4NDg1NjA3MzYgNTU3LjQ3NTI1NzI4Mzc1MDIgMTc5Ni4xOTg4Nzk0MjA5Nzg4IDY4MS4xMzEyNzIzNjg3MjM4IEMgMTg2OS44NTk5NDYzMzMyOTY2IDU2OS4wOTgyOTcxNjkxNjkyIDE5NzcuMTg4OTkzODUxNDQ2NiAyMzYuODE1NjE2MDczNzg5ODQgMTk2MCAtMTAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIDE5NjAgLTEwIEMgMTc4OC43MTYzMTU1MjY4NDk3IDE2MS4zODcxMDAyMTE1Mjc2IDE2NDMuODUwNzg4NDc1ODU4MyA0OTAuMzA5MDA3MDIxNjQyMDYgMTUzNy44NDc3NDI4NDU2MyA1OTIuODk1OTA0NTk2Njk3OCBDIDE2ODUuMTM2MDUxNTA4MDIzNyA1MTkuMjE3MjU5NDEzNzM0OCAxODk0Ljg3ODQyMDQ2NjcwMyAyMzUuNzIyNjA2MzYyNjIzMjIgMTk2MCAtMTAgWiIgZmlsbD0iIzBkMmExYSIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIDE5NjAgLTEwIEMgMTc1OC4yMzIwNjk1Mjg0NzMyIDgzLjUwMDMyNzExOTYzMDkyIDE1MzAuNzUzMDAyMDIxMjY5NCAzMzEuNjUzMDU4NTAyNjI3NCAxMzY2LjU3MjMyNjA5ODA3NjcgMzgwLjMwMzUyMTExNjk3MTg3IEMgMTU1OC40NDgyNTQ1MTYwMzggMzczLjc2MTY0NDE5NzgzOTQgMTgyOS40NDg0MzMwODY0NDk1IDE5MS43Nzk1NDc0Nzg3NDc0NyAxOTYwIC0xMCBaIiBmaWxsPSIjMGQyYTFhIiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gMTk2MCAtMTAgQyAxNzcxLjM5ODQ2MTg5MjQ5NzIgLTIuNjYzODgzMzI4NTA2NTM2IDE1MTYuMTU5NTE4NjI2MjY1NSAxMzYuNTU0MDg4NzM2MjYxMTIgMTMzMy4yMjIwMDIwNzAwNDcgMTE5LjQxOTI0NjI5MjUwNDI4IEMgMTUyNi4zNTEyODQyNzE4MDAzIDE4NS45MTI4NTYwNzMyNDQ4OCAxNzk3LjYwNTg1OTI2NjcyOTMgMTI0LjI1ODY2MTI1MjMwODk0IDE5NjAgLTEwIFoiIGZpbGw9IiMwZDJhMWEiIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAxOTYwIC0xMCBDIDE4MjEuMjQ2NDg0OTczOTk3NCAtNzAuODg5NjMyODE3NDE3OTIgMTU4OS4zNjExNDE3MzAxNTggLTMyLjM5ODM4MTQzMTQ3NDc2IDE0MjQuMjY0NTgyMzYxMzU4OSAtMTA0LjQ2NDYwODY1MDgxMDE4IEMgMTU4MC42MDkyNzM1NzU3NDQ1IDE3LjIzNTkyOTMyMDM0MDUzIDE3OTguNzQxNjgxMTQ4MzYzMyA1Ni43NDE0NTE5NzI5NjQyMyAxOTYwIC0xMCBaIiBmaWxsPSIjMGQyYTFhIiBvcGFjaXR5PSIxIi8+PC9nPgo8ZyBvcGFjaXR5PSIwLjciPjxwYXRoIGQ9Ik0gMTk5MCAtNTAgQyAxOTkyLjc5MTg5NDIxNTkzNjcgMTA3LjEzMDg3MTUyMzQ5MzA4IDIwOTMuMTcyNDkyNzI1NjIyIDI5OC4wMTc3NzU4ODE2MDM1NCAyMTYyLjcwMzE1ODc5MjI1OSAzNTYuODYzMTQ1MjI1OTc4NjYgQyAyMTI4LjYxMTkyOTU4MzU0MDYgMjgyLjk3NDYyNzQzNDc2NjUgMjA4My45MjE4NzQ3MDc3Mjg0IDY4LjQ0ODQ4OTgwMzA1NDk4IDE5OTAgLTUwIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAxOTkwIC01MCBDIDE5MjguNTE5MTczMzc5NzU4NyAxMzAuMTEwNjQzMTczMjM0OTYgMTk0MC40NzU3OTQ4MjQ1MDgzIDQwMy41MDQ4MDU1MTU4NjEyIDE5NDYuNjY2MzYyMTQxMjQ0NSA1MDAuNjA2MDc0NTk2NTk5MiBDIDE5NzguODU3MTEyMTczMjMzOSA0MDYuNTI1NDgwNzAxMzgzMjMgMjAyNy4yMTM5ODk0MTkzMzgzIDEzNy44NzgwOTM2NTAyOTE2MiAxOTkwIC01MCBaIiBmaWxsPSIjMTczZjI3IiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gMTk5MCAtNTAgQyAxODU5LjI5MTkzNzYzNzA0OTIgOTguMDU4MTY5NjQwODg4MzUgMTc1MS44NTA4NzAxNDA5Njk0IDM3MC4xMzk5ODcyMTQ1OTA3NSAxNjczLjEwODI3OTk4ODU0MzUgNDU3LjEzMjc2MTUwMTU0MjggQyAxNzg0LjUwMDcyMTg0Mjk5MTcgMzkwLjU0MTg3ODg4NzU2OTE3IDE5NDMuMjQ4Njk5MTU2NTM1MiAxNTAuNTIwMTc2Nzk5OTc1NjIgMTk5MCAtNTAgWiIgZmlsbD0iIzE3M2YyNyIgb3BhY2l0eT0iMSIvPgo8cGF0aCBkPSJNIDE5OTAgLTUwIEMgMTgzMS42Mjg5ODIzODI3OTUgMTUuNjYzMDE3MDYwMTg1NTY3IDE2NDcuMTEwMjE0ODg2MzgxMyAxOTkuMjI3MDExOTk1ODE3NCAxNTE0LjExNDc1NDgxOTEwNjggMjMwLjMxNzgzMjA2MTg3NzE0IEMgMTY2Ni42NTA0NDE4NjAzNjgzIDIzMi4zOTk3MzQ2NzI4MTYxMiAxODgxLjg3NTI4MDMxNTkwNDggMTAwLjk2NDMwMzk0Mzg5NjYyIDE5OTAgLTUwIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAxOTkwIC01MCBDIDE4NjMuODE4OTc4OTQ0NzQ4IC02OS4wODcwNjQwMjU3MjQ2OSAxNjgwLjAxNjU1NDc4OTI1ODIgMi42NjExMjYzMTc1NDEyNjc0IDE1NDguNjA1NzQ1NjM4NDc4MyAtMjYuODY3NTA3MzQwNjE4ODM2IEMgMTY4Mi4wMzE0ODkxMDQ2MTE2IDQxLjEwODM2MzQwNTU5MjM2IDE4NjkuMDAwMjM4NjEyNzk5NiAyOS43NzcyNTk5MTQ5NzgxMzUgMTk5MCAtNTAgWiIgZmlsbD0iIzE3M2YyNyIgb3BhY2l0eT0iMSIvPjwvZz4KPGcgb3BhY2l0eT0iMC42Ij48cGF0aCBkPSJNIDE5NTAgMzAyLjQwMDAwMDAwMDAwMDAzIEMgMTg5NC40MTA1NDQ4MTQ4MDg0IDQwMS44NzUyNjE5ODY5MTM1IDE4OTUuMjI3NDI0OTE5NTY0OCA1NjMuMDI4MDc0MTU3ODA2IDE4OTMuOTExNjM4NjEzNTgxNSA2MjAuNDkyOTA0MjIyOTQzMyBDIDE5MjYuMjQ4ODY5MTM5NDQ5MiA1NjguNDk3OTkxNzU0MzE0NCAxOTc0LjE3OTk3MjgwODc5NzIgNDE1Ljk0MDc2NDM3NzkzNDg0IDE5NTAgMzAyLjQwMDAwMDAwMDAwMDAzIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAxOTUwIDMwMi40MDAwMDAwMDAwMDAwMyBDIDE4NDMuMDcyNTY5NDkwMzIzNSAzODkuNTk3NTg2ODU0NjI1MSAxNzQ4LjE3ODIyMzYxMjQ4MTQgNTcxLjU1Njc2NTcwMDQ3OSAxNjc4LjkxOTE3NjU1OTQzNiA2MjUuNDYxNTQ1MjE4Njg4OSBDIDE3NzIuMzA4NjIzNTcwNzI5MiA1OTEuODA0NTc1NDA1NjA1IDE5MDUuMTIyMTY5MzgyOTYwNyA0NDEuNjYzMzgzMjM5MjM0OCAxOTUwIDMwMi40MDAwMDAwMDAwMDAwMyBaIiBmaWxsPSIjMTczZjI3IiBvcGFjaXR5PSIxIi8+CjxwYXRoIGQ9Ik0gMTk1MCAzMDIuNDAwMDAwMDAwMDAwMDMgQyAxODI1LjE4NTk2MTU4Mjc2MSAzMjcuNTAyNjQ3NDAyODU1OSAxNjY3LjIwNzYyNjIxMTI0NjkgNDQxLjcwNDc5NTUyMDA1MjEzIDE1NTMuNzA2MzQ3ODEyMzIzIDQ0Ni42MzkwOTM0MjQ5NTc4IEMgMTY3Ny45ODEyNjA3MjYwMDU1IDQ3MS4zMDUxMTMwNzQ4MDgyIDE4NTIuODg5NTkzMTkyMTQgNDAzLjYxNzc0OTY4NjUxNDQ2IDE5NTAgMzAyLjQwMDAwMDAwMDAwMDAzIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz4KPHBhdGggZD0iTSAxOTUwIDMwMi40MDAwMDAwMDAwMDAwMyBDIDE4NjcuOTY2NzM4MDEzMDg2NiAyNjQuMjUyNTQ0ODE0ODA4NCAxNzMwLjA2OTkyNTg0MjE5NCAyODguMzI1NDI0OTE5NTY0OCAxNjMxLjkwNzA5NTc3NzA1NjggMjQ2LjMxMTYzODYxMzU4MTUgQyAxNzI0LjYwMDAwODI0NTY4NTYgMzE5LjM0Njg2OTEzOTQ0OTMgMTg1My45MDEyMzU2MjIwNjUzIDM0NC4wMjE5NzI4MDg3OTczIDE5NTAgMzAyLjQwMDAwMDAwMDAwMDAzIFoiIGZpbGw9IiMxNzNmMjciIG9wYWNpdHk9IjEiLz48L2c+Cjwvc3ZnPg==");
+        background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80");
         background-size: cover;
         background-position: center;
         filter: blur(2.5px) saturate(1.05);
@@ -91,11 +90,6 @@
             transparent 62%
           );
       }
-      .app-bg .leaf {
-        position: absolute;
-        opacity: 0.22;
-      }
-
       .shell {
         position: relative;
         z-index: 1;
@@ -119,8 +113,6 @@
           0 1px 0 rgba(255, 255, 255, 0.06) inset;
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
-
-      /* SIDEBAR */
       .sidebar {
         width: 270px;
         min-width: 270px;
@@ -157,6 +149,11 @@
         flex-shrink: 0;
         font-size: 18px;
       }
+      .brand-mark svg {
+        width: 22px;
+        height: 22px;
+        display: block;
+      }
       .brand-text .t1 {
         font-family: "Anton", sans-serif;
         color: #fff;
@@ -171,7 +168,6 @@
         font-weight: 700;
         margin-top: 2px;
       }
-
       .nav-group {
         display: flex;
         flex-direction: column;
@@ -223,7 +219,6 @@
       .nav-item.active svg {
         opacity: 1;
       }
-
       .nav-section-label {
         color: #5f81a3;
         font-size: 10px;
@@ -231,7 +226,6 @@
         letter-spacing: 0.12em;
         padding: 14px 14px 4px;
       }
-
       .sidebar-bottom {
         display: flex;
         justify-content: center;
@@ -240,20 +234,6 @@
         margin-top: 8px;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         position: relative;
-      }
-      .sidebar-bottom::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: 0;
-        right: 0;
-        height: 46px;
-        pointer-events: none;
-        opacity: 0.5;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 46"><g fill="%23213d5d"><rect x="6" y="20" width="14" height="26"/><rect x="24" y="10" width="12" height="36"/><polygon points="30,10 24,20 36,20"/><rect x="42" y="24" width="16" height="22"/><rect x="64" y="6" width="10" height="40"/><circle cx="69" cy="10" r="7"/><rect x="82" y="18" width="18" height="28"/><rect x="106" y="14" width="12" height="32"/><rect x="124" y="22" width="20" height="24"/><rect x="150" y="8" width="14" height="38"/><polygon points="157,0 150,8 164,8"/><rect x="170" y="20" width="16" height="26"/><rect x="192" y="12" width="10" height="34"/><rect x="208" y="24" width="18" height="22"/><rect x="232" y="16" width="12" height="30"/><rect x="250" y="22" width="20" height="24"/><rect x="276" y="10" width="14" height="36"/></g></svg>');
-        background-repeat: repeat-x;
-        background-size: 300px 46px;
-        background-position: bottom;
       }
       .sidebar-bottom button {
         display: flex;
@@ -280,8 +260,6 @@
         color: #fff;
         border-color: transparent;
       }
-
-      /* TOPBAR */
       .main {
         flex: 1;
         display: flex;
@@ -378,6 +356,9 @@
         box-shadow:
           0 0 0 3px rgba(47, 111, 237, 0.14),
           0 4px 10px -4px rgba(15, 35, 60, 0.3);
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
       }
       .user-meta .name {
         font-weight: 700;
@@ -388,7 +369,102 @@
         font-size: 11px;
         color: var(--muted);
       }
-
+      .notif-menu {
+        position: absolute;
+        top: 40px;
+        right: -10px;
+        width: 320px;
+        max-height: 420px;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        box-shadow: 0 20px 40px -10px rgba(2, 10, 20, 0.25);
+        padding: 8px;
+        display: none;
+        z-index: 50;
+      }
+      .notif-menu.open {
+        display: block;
+      }
+      .notif-menu-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 10px 10px;
+      }
+      .notif-menu-head .t {
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .notif-menu-head .c {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .notif-item {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: default;
+        position: relative;
+      }
+      .notif-item:hover {
+        background: var(--accent-soft);
+      }
+      .notif-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .notif-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+      .notif-main {
+        flex: 1;
+        min-width: 0;
+      }
+      .notif-title {
+        font-size: 12.5px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      .notif-sub {
+        font-size: 11.5px;
+        color: var(--muted);
+        margin-top: 2px;
+        line-height: 1.4;
+      }
+      .notif-time {
+        font-size: 10.5px;
+        color: #94a3b8;
+        margin-top: 4px;
+        font-weight: 600;
+      }
+      .notif-item.unread::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        left: -2px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .notif-empty {
+        padding: 30px 10px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12.5px;
+      }
       .role-menu {
         position: absolute;
         top: 52px;
@@ -435,8 +511,6 @@
         font-size: 10.5px;
         color: var(--muted);
       }
-
-      /* CONTENT */
       .content {
         flex: 1;
         overflow-y: auto;
@@ -462,13 +536,15 @@
         transform: translateY(-1px);
       }
       .soft-card {
-        background: linear-gradient(160deg, var(--navy-800), var(--navy-700));
-        color: #fff;
+        background: #fff;
+        color: var(--ink);
+        border: 1px solid var(--border);
         border-radius: 16px;
         padding: 20px;
-        box-shadow: 0 12px 30px -12px rgba(8, 20, 34, 0.5);
+        box-shadow:
+          0 1px 2px rgba(15, 35, 60, 0.04),
+          0 8px 20px -12px rgba(15, 35, 60, 0.1);
       }
-
       .badge {
         display: inline-flex;
         align-items: center;
@@ -504,7 +580,6 @@
         color: #475569;
         border-color: #e2e8f0;
       }
-
       .btn {
         display: inline-flex;
         align-items: center;
@@ -551,7 +626,6 @@
         background: var(--accent-soft);
         transform: translateY(-1px);
       }
-
       .progress-track {
         width: 100%;
         height: 8px;
@@ -566,7 +640,6 @@
         position: relative;
         transition: width 0.5s ease;
       }
-
       .tab-row {
         display: flex;
         gap: 6px;
@@ -588,13 +661,11 @@
         color: var(--accent);
         border-color: var(--accent);
       }
-
       .grid-cols-auto {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
         gap: 16px;
       }
-
       .modal-overlay {
         position: fixed;
         inset: 0;
@@ -658,7 +729,6 @@
         outline: 2px solid var(--accent);
         border-color: var(--accent);
       }
-
       .star-row {
         display: flex;
         gap: 4px;
@@ -669,9 +739,8 @@
         font-size: 22px;
       }
       .star.filled {
-        color: var(--accent);
+        color: #fbbf24;
       }
-
       .toast {
         position: fixed;
         bottom: 24px;
@@ -696,7 +765,6 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
-
       .avatar-ring {
         width: 34px;
         height: 34px;
@@ -709,8 +777,10 @@
         font-weight: 700;
         font-size: 12px;
         flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
       }
-
       ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
@@ -722,7 +792,6 @@
       ::-webkit-scrollbar-track {
         background: transparent;
       }
-
       @media (max-width: 900px) {
         .shell {
           padding: 0;
@@ -768,19 +837,223 @@
       .sb-scrim.open {
         display: block;
       }
+      .dev-snapshot-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .dev-snapshot-avg {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+      }
+      .dev-snapshot-avg .num {
+        font-size: 26px;
+        font-weight: 800;
+        font-family: "Be Vietnam Pro", sans-serif;
+      }
+      .dev-snapshot-avg .denom {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .dev-skill-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .dev-skill-row:last-of-type {
+        border-bottom: none;
+      }
+      .dev-skill-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        background: var(--accent-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 12.5px;
+        font-weight: 800;
+        color: var(--accent);
+      }
+      .dev-skill-main {
+        flex: 1;
+        min-width: 0;
+      }
+      .dev-skill-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+      .dev-skill-name {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .dev-skill-score {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .dev-skill-track {
+        height: 6px;
+        border-radius: 99px;
+        background: #eef2f6;
+        overflow: hidden;
+      }
+      .dev-skill-fill {
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      }
+      .profile-photo-wrap {
+        position: relative;
+        width: 84px;
+        height: 84px;
+        flex-shrink: 0;
+      }
+      .profile-photo {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 26px;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        border: 3px solid #fff;
+        box-shadow: 0 6px 18px -6px rgba(15, 35, 60, 0.35);
+      }
+      .profile-photo-edit {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 2px solid #fff;
+        box-shadow: 0 4px 10px -3px rgba(15, 35, 60, 0.4);
+      }
+      .profile-photo-edit svg {
+        width: 14px;
+        height: 14px;
+      }
+      .profile-section-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin: 22px 0 10px;
+      }
+      .locked-field {
+        position: relative;
+      }
+      .locked-input-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .locked-field .field-input {
+        background: #f4f7fb;
+        color: #64748b;
+        cursor: not-allowed;
+        padding-right: 34px;
+        margin-bottom: 0;
+      }
+      .locked-input-wrap svg {
+        position: absolute;
+        right: 12px;
+        width: 15px;
+        height: 15px;
+        color: #94a3b8;
+        pointer-events: none;
+      }
+      .period-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .period-toggle {
+        display: inline-flex;
+        background: #eef2f6;
+        border-radius: 10px;
+        padding: 3px;
+        gap: 2px;
+      }
+      .period-btn {
+        border: none;
+        background: transparent;
+        padding: 8px 16px;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--muted);
+        border-radius: 8px;
+        cursor: pointer;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+      }
+      .period-btn.active {
+        background: #fff;
+        color: var(--ink);
+        box-shadow: 0 2px 6px -2px rgba(15, 35, 60, 0.25);
+      }
+      #printReportArea {
+        display: none;
+      }
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #printReportArea,
+        #printReportArea * {
+          visibility: visible;
+        }
+        #printReportArea {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 0;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="app-bg"><div class="bg-photo"></div></div>
-
     <div class="shell">
       <div class="frame">
         <div class="sb-scrim" id="sbScrim" onclick="toggleSidebar(false)"></div>
-
-        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
           <div class="brand">
-            <div class="brand-mark font-display">C</div>
+            <div class="brand-mark font-display">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M21.5 12.5c.3-.5.2-1.1-.2-1.5l-3.3-3.3c-.2-.2-.5-.3-.7-.3-.3 0-.5.1-.7.3l-1.6 1.6-5-1.9c-.3-.1-.6-.1-.8.1l-.9.7c-.3.2-.3.6 0 .9l3.5 2.9-2 2-2.4-.5c-.2 0-.5 0-.6.2l-.6.6c-.2.2-.2.6.1.8l2.6 1.8 1.8 2.6c.2.2.5.3.8.1l.6-.6c.2-.2.2-.4.2-.6l-.5-2.4 2-2 2.9 3.5c.2.3.6.3.9 0l.7-.9c.2-.2.2-.5.1-.8l-1.9-5 1.6-1.6c.3-.3.5-.7.5-1.1 0-.2 0-.4-.1-.6z"
+                />
+              </svg>
+            </div>
             <div class="brand-text">
               <div class="t1 font-display">CENTINEL HR</div>
               <div class="t2">PERFORMANCE &amp; DEVELOPMENT</div>
@@ -788,11 +1061,26 @@
           </div>
           <div class="nav-group" id="navGroup"></div>
           <div class="sidebar-bottom">
+            <button onclick="navigate('profile')" title="Profile">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                width="16"
+                height="16"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21a8 8 0 0 1 16 0" />
+              </svg>
+              <span>Profile</span>
+            </button>
             <button
               onclick="
                 navigate(currentRole === 'hradmin' ? 'settings' : 'profile')
               "
               title="Settings"
+              id="settingsBtn"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -826,8 +1114,6 @@
             </button>
           </div>
         </aside>
-
-        <!-- MAIN -->
         <div class="main">
           <div class="topbar">
             <div class="topbar-left">
@@ -851,7 +1137,11 @@
               </div>
             </div>
             <div class="topbar-right">
-              <div class="bell" title="Notifications">
+              <div
+                class="bell"
+                title="Notifications"
+                onclick="toggleNotifPanel(event)"
+              >
                 <svg
                   width="21"
                   height="21"
@@ -863,7 +1153,8 @@
                   <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
                   <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
                 </svg>
-                <span class="dot"></span>
+                <span class="dot" id="notifDot"></span>
+                <div class="notif-menu" id="notifMenu"></div>
               </div>
               <div class="user-chip" onclick="toggleRoleMenu()">
                 <div class="avatar" id="topAvatar">MS</div>
@@ -920,47 +1211,72 @@
               </div>
             </div>
           </div>
-
           <div class="content" id="content"></div>
         </div>
       </div>
     </div>
-
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal" id="modalBody"></div>
     </div>
     <div class="toast" id="toast"></div>
+    <div id="printReportArea"></div>
+    <input
+      type="file"
+      id="photoFileInput"
+      accept="image/*"
+      style="display: none"
+      onchange="handlePhotoFile(event)"
+    />
 
     <script>
-      /* ============================= DATA ============================= */
       const currentUsers = {
         employee: {
           id: "EMP-1042",
           name: "Maria Santos",
+          firstName: "Maria",
+          middleName: "Lopez",
+          lastName: "Santos",
           position: "Travel Consultant",
           dept: "Sales & Bookings",
           initials: "MS",
           roleLabel: "Employee",
+          email: "maria.santos@centinel.travel",
+          phone: "+63 917 555 0142",
+          bio: "Travel consultant focused on client care and smooth bookings.",
+          photo: null,
         },
         manager: {
           id: "EMP-1005",
           name: "Carlos Dela Cruz",
+          firstName: "Carlos",
+          middleName: "Reyes",
+          lastName: "Dela Cruz",
           position: "Operations Manager",
           dept: "Operations",
           initials: "CD",
           roleLabel: "Manager",
+          email: "carlos.delacruz@centinel.travel",
+          phone: "+63 917 555 0105",
+          bio: "Leads the operations team and keeps every tour on schedule.",
+          photo: null,
         },
         hradmin: {
           id: "EMP-1001",
           name: "Angela Reyes",
+          firstName: "Angela",
+          middleName: "Cruz",
+          lastName: "Reyes",
           position: "HR Business Partner",
           dept: "Human Resources",
           initials: "AR",
           roleLabel: "HR Admin",
+          email: "angela.reyes@centinel.travel",
+          phone: "+63 917 555 0101",
+          bio: "Oversees performance cycles and people development company-wide.",
+          photo: null,
         },
       };
       let currentRole = "employee";
-
       const team = [
         {
           id: "EMP-1042",
@@ -1014,7 +1330,6 @@
       function empById(id) {
         return team.find((e) => e.id === id) || currentUsers.hradmin;
       }
-
       let goals = [
         {
           id: "G-001",
@@ -1089,7 +1404,6 @@
           due: "Dec 1, 2026",
         },
       ];
-
       let reviews = [
         {
           id: "R-101",
@@ -1172,7 +1486,6 @@
           ],
         },
       ];
-
       const trainingCatalog = [
         {
           id: "T-01",
@@ -1261,7 +1574,6 @@
           status: "In Progress",
         },
       ];
-
       let feedbackList = [
         {
           id: "F-01",
@@ -1304,7 +1616,49 @@
           date: "Jun 30, 2026",
         },
       ];
-
+      let customerReviews = [
+        {
+          id: "CR-01",
+          employeeId: "EMP-1042",
+          customerName: "Liza Gomez",
+          tour: "Boracay Beach Getaway",
+          rating: 5,
+          comment:
+            "Napakabait at helpful ni Maria sa buong booking process, sulit yung tour package!",
+          date: "Jul 5, 2026",
+        },
+        {
+          id: "CR-02",
+          employeeId: "EMP-1042",
+          customerName: "Paolo Reyes",
+          tour: "Palawan Island Hopping",
+          rating: 4,
+          comment:
+            "Mabilis mag-reply si Maria pero medyo nagulat kami sa additional fees.",
+          date: "Jun 25, 2026",
+        },
+        {
+          id: "CR-03",
+          employeeId: "EMP-1043",
+          customerName: "Andrea Cruz",
+          tour: "Baguio Weekend Tour",
+          rating: 5,
+          comment:
+            "Si Jasper super organized, walang aberya sa buong itinerary.",
+          date: "Jun 18, 2026",
+        },
+        {
+          id: "CR-04",
+          employeeId: "EMP-1045",
+          customerName: "Mark Villanueva",
+          tour: "Cebu Flight Rebooking",
+          rating: 3,
+          comment:
+            "Medyo na-delay yung rebooking pero na-solve din naman agad.",
+          date: "Jun 10, 2026",
+        },
+      ];
+      let crCounter = 100;
       let skillsData = [
         { employeeId: "EMP-1042", skill: "Customer Service", self: 4, mgr: 5 },
         { employeeId: "EMP-1042", skill: "Sales & Upselling", self: 3, mgr: 3 },
@@ -1339,10 +1693,8 @@
         { employeeId: "EMP-1043", skill: "Communication", self: 3, mgr: 2 },
         { employeeId: "EMP-1043", skill: "Problem Solving", self: 4, mgr: 4 },
       ];
-
       let idCounter = 200;
 
-      /* ============================= NAV CONFIG ============================= */
       const icons = {
         dashboard:
           '<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>',
@@ -1364,6 +1716,8 @@
           '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/>',
         profile:
           '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+        customer:
+          '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.3 2.3L16 9.5"/>',
       };
       function iconSvg(name) {
         return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icons[name]}</svg>`;
@@ -1372,51 +1726,99 @@
       const navConfig = {
         employee: [
           { key: "dashboard", label: "Dashboard", icon: "dashboard" },
-          { key: "reviews", label: "My Reviews", icon: "reviews" },
+          { key: "reviews", label: "Reviews & Feedback", icon: "reviews" },
+          {
+            key: "customerReviews",
+            label: "Customer Reviews",
+            icon: "customer",
+          },
           { key: "goals", label: "My Goals", icon: "goals" },
           { key: "training", label: "Training", icon: "training" },
-          { key: "feedback", label: "Feedback", icon: "feedback" },
-          { key: "skills", label: "My Skills", icon: "skills" },
           { key: "profile", label: "Profile", icon: "profile" },
         ],
         manager: [
           { key: "dashboard", label: "Dashboard", icon: "dashboard" },
-          { key: "reviews", label: "Team Reviews", icon: "reviews" },
+          { key: "reviews", label: "Reviews & Feedback", icon: "reviews" },
+          {
+            key: "customerReviews",
+            label: "Customer Reviews",
+            icon: "customer",
+          },
           { key: "goals", label: "Team Goals", icon: "goals" },
           { key: "training", label: "Training", icon: "training" },
-          { key: "feedback", label: "360° Feedback", icon: "feedback" },
           { key: "skills", label: "Skills Matrix", icon: "skills" },
           { key: "reports", label: "Reports", icon: "reports" },
           { key: "people", label: "My Team", icon: "people" },
+          { key: "profile", label: "Profile", icon: "profile" },
         ],
         hradmin: [
           { key: "dashboard", label: "Dashboard", icon: "dashboard" },
-          { key: "reviews", label: "Review Cycles", icon: "reviews" },
+          { key: "reviews", label: "Reviews & Feedback", icon: "reviews" },
+          {
+            key: "customerReviews",
+            label: "Customer Reviews",
+            icon: "customer",
+          },
           { key: "goals", label: "Goals & KPIs", icon: "goals" },
           { key: "training", label: "Training Catalog", icon: "training" },
-          { key: "feedback", label: "360° Feedback", icon: "feedback" },
           { key: "skills", label: "Skills Matrix", icon: "skills" },
           { key: "reports", label: "Reports & Analytics", icon: "reports" },
           { key: "people", label: "Employees", icon: "people" },
+          { key: "profile", label: "Profile", icon: "profile" },
           { key: "settings", label: "Settings", icon: "settings" },
         ],
       };
       const pageSubtitles = {
         dashboard: "OVERVIEW",
-        reviews: "PERFORMANCE",
+        reviews: "PERFORMANCE & FEEDBACK",
+        customerReviews: "CUSTOMER FEEDBACK",
         goals: "OBJECTIVES",
         training: "LEARNING",
-        feedback: "360° INPUT",
         skills: "COMPETENCY",
         reports: "INSIGHTS",
         people: "DIRECTORY",
         settings: "SYSTEM",
         profile: "ACCOUNT",
       };
-
       let currentPage = "dashboard";
+      let reportPeriod = "monthly";
+      const periodMeta = {
+        weekly: {
+          label: "Weekly",
+          trendSubtitle: "Weekly trend — last 8 weeks",
+          trendLabels: [
+            "Wk 1",
+            "Wk 2",
+            "Wk 3",
+            "Wk 4",
+            "Wk 5",
+            "Wk 6",
+            "Wk 7",
+            "Wk 8",
+          ],
+          trendData: [58, 61, 63, 66, 69, 72, 76, 79],
+          rangeLabel: "Last 8 weeks",
+        },
+        monthly: {
+          label: "Monthly",
+          trendSubtitle: "Six-month rolling average",
+          trendLabels: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          trendData: [48, 55, 60, 66, 74, 79],
+          rangeLabel: "Feb – Jul 2026",
+        },
+        yearly: {
+          label: "Yearly",
+          trendSubtitle: "Five-year performance trend",
+          trendLabels: ["2022", "2023", "2024", "2025", "2026"],
+          trendData: [38, 47, 56, 68, 79],
+          rangeLabel: "2022 – 2026",
+        },
+      };
+      function setReportPeriod(p) {
+        reportPeriod = p;
+        navigate("reports");
+      }
 
-      /* ============================= HELPERS ============================= */
       function toast(msg) {
         const t = document.getElementById("toast");
         t.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>${msg}`;
@@ -1470,25 +1872,180 @@
         }
         return `<span class="star-row">${s}</span>`;
       }
+      function avatarStyle(photo) {
+        return photo ? `background-image:url('${photo}');` : "";
+      }
 
-      /* ============================= NAV / SHELL RENDER ============================= */
+      const notifIcons = {
+        review:
+          '<path d="M12 17.3 6.2 20l1.1-6.5L2.6 9l6.5-1L12 2l2.9 6 6.5 1-4.7 4.5 1.1 6.5z"/>',
+        feedback:
+          '<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.3 0-2.5-.3-3.6-.8L3 21l1.8-5.4A8.5 8.5 0 1 1 21 11.5Z"/>',
+        goal: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
+        training:
+          '<path d="M2 4.5 12 2l10 2.5-10 2.5-10-2.5Z"/><path d="M6 8.5v6c0 1.4 2.7 3 6 3s6-1.6 6-3v-6"/><path d="M22 4.5v7"/>',
+        alert:
+          '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+      };
+      function notifIconSvg(name) {
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${notifIcons[name]}</svg>`;
+      }
+      let notifReadIds = new Set();
+      function notifications() {
+        const list = [];
+        if (currentRole === "employee") {
+          const rev = myReview();
+          if (rev && rev.status === "Completed") {
+            list.push({
+              id: "n-rev-" + rev.id,
+              icon: "review",
+              title: "Your performance review is ready",
+              sub: `${rev.reviewer} completed your ${rev.cycle} review — overall rating ${rev.overall}/5.0.`,
+              time: rev.date,
+            });
+          }
+          myFeedback()
+            .slice(0, 2)
+            .forEach((f) => {
+              list.push({
+                id: "n-fb-" + f.id,
+                icon: "feedback",
+                title: `New feedback from ${f.fromName}`,
+                sub:
+                  f.comment.slice(0, 80) + (f.comment.length > 80 ? "…" : ""),
+                time: f.date,
+              });
+            });
+          myEnrollments()
+            .filter((e) => e.status === "In Progress")
+            .forEach((e) => {
+              const t = trainingCatalog.find((x) => x.id === e.trainingId);
+              list.push({
+                id: "n-tr-" + e.trainingId,
+                icon: "training",
+                title: `Continue "${t.title}"`,
+                sub: `You're ${e.progress}% through this course.`,
+                time: "In progress",
+              });
+            });
+          myGoals()
+            .filter((g) => g.status === "At Risk")
+            .forEach((g) => {
+              list.push({
+                id: "n-goal-" + g.id,
+                icon: "alert",
+                title: "Goal needs attention",
+                sub: `"${g.title}" is marked At Risk. Due ${g.due}.`,
+                time: g.due,
+              });
+            });
+        } else {
+          const overdueReviews = reviews.filter((r) => r.status === "Overdue");
+          overdueReviews.forEach((r) => {
+            list.push({
+              id: "n-rev-" + r.id,
+              icon: "alert",
+              title: `${empById(r.employeeId).name}'s review is overdue`,
+              sub: `${r.cycle} review ${r.date.toLowerCase()}.`,
+              time: r.date,
+            });
+          });
+          const scheduled = reviews.filter(
+            (r) => r.status === "In Progress" || r.status === "Scheduled",
+          );
+          scheduled.forEach((r) => {
+            list.push({
+              id: "n-sched-" + r.id,
+              icon: "review",
+              title: `Review coming up: ${empById(r.employeeId).name}`,
+              sub: `${r.cycle} · ${r.date}`,
+              time: r.date,
+            });
+          });
+          const atRiskGoals = (
+            currentRole === "hradmin"
+              ? goals
+              : goals.filter((g) => teamIds().includes(g.employeeId))
+          ).filter((g) => g.status === "At Risk");
+          atRiskGoals.forEach((g) => {
+            list.push({
+              id: "n-goal-" + g.id,
+              icon: "alert",
+              title: `${empById(g.employeeId).name}'s goal is at risk`,
+              sub: `"${g.title}" · Due ${g.due}`,
+              time: g.due,
+            });
+          });
+          feedbackList.slice(0, 2).forEach((f) => {
+            list.push({
+              id: "n-fb-" + f.id,
+              icon: "feedback",
+              title: `${f.fromName} gave feedback on ${empById(f.aboutId).name}`,
+              sub: f.comment.slice(0, 80) + (f.comment.length > 80 ? "…" : ""),
+              time: f.date,
+            });
+          });
+        }
+        return list;
+      }
+      function renderNotifPanel() {
+        const list = notifications();
+        const unreadCount = list.filter((n) => !notifReadIds.has(n.id)).length;
+        const menu = document.getElementById("notifMenu");
+        if (!menu) return;
+        menu.innerHTML = `<div class="notif-menu-head"><span class="t">Notifications</span><span class="c">${unreadCount ? unreadCount + " new" : "All caught up"}</span></div>${
+          list.length === 0
+            ? `<div class="notif-empty">No notifications right now.</div>`
+            : list
+                .map(
+                  (n) =>
+                    `<div class="notif-item ${!notifReadIds.has(n.id) ? "unread" : ""}"><div class="notif-icon">${notifIconSvg(n.icon)}</div><div class="notif-main"><div class="notif-title">${n.title}</div><div class="notif-sub">${n.sub}</div><div class="notif-time">${n.time}</div></div></div>`,
+                )
+                .join("")
+        }`;
+        const dot = document.getElementById("notifDot");
+        if (dot) dot.style.display = unreadCount ? "block" : "none";
+      }
+      function toggleNotifPanel(evt) {
+        if (evt) evt.stopPropagation();
+        const menu = document.getElementById("notifMenu");
+        const opening = !menu.classList.contains("open");
+        document.getElementById("roleMenu").classList.remove("open");
+        renderNotifPanel();
+        menu.classList.toggle("open", opening);
+        if (opening) {
+          notifications().forEach((n) => notifReadIds.add(n.id));
+          setTimeout(() => {
+            const dot = document.getElementById("notifDot");
+            if (dot) dot.style.display = "none";
+          }, 400);
+        }
+      }
+
       function renderShell() {
         const u = currentUsers[currentRole];
-        document.getElementById("topAvatar").textContent = u.initials;
+        const topAv = document.getElementById("topAvatar");
+        topAv.textContent = u.photo ? "" : u.initials;
+        topAv.style.cssText = avatarStyle(u.photo);
         document.getElementById("topName").textContent = u.name;
         document.getElementById("topRole").textContent = u.roleLabel;
         document.querySelectorAll(".role-opt").forEach((el) => {
           el.classList.toggle("active", el.dataset.role === currentRole);
         });
-
+        const settingsBtn = document.getElementById("settingsBtn");
+        if (settingsBtn)
+          settingsBtn.style.display =
+            currentRole === "hradmin" ? "flex" : "none";
+        const unreadCount = notifications().filter(
+          (n) => !notifReadIds.has(n.id),
+        ).length;
+        const dot = document.getElementById("notifDot");
+        if (dot) dot.style.display = unreadCount ? "block" : "none";
         const nav = navConfig[currentRole];
         document.getElementById("navGroup").innerHTML = nav
           .map(
-            (item) => `
-    <button class="nav-item ${currentPage === item.key ? "active" : ""}" onclick="navigate('${item.key}')">
-      ${iconSvg(item.icon)}<span>${item.label}</span>
-    </button>
-  `,
+            (item) =>
+              `<button class="nav-item ${currentPage === item.key ? "active" : ""}" onclick="navigate('${item.key}')">${iconSvg(item.icon)}<span>${item.label}</span></button>`,
           )
           .join("");
       }
@@ -1521,9 +2078,9 @@
         navigate("dashboard");
         toast(`Now previewing as ${currentUsers[role].roleLabel}`);
       }
-
       function toggleRoleMenu(force) {
         const m = document.getElementById("roleMenu");
+        document.getElementById("notifMenu").classList.remove("open");
         if (typeof force === "boolean") {
           m.classList.toggle("open", force);
           return;
@@ -1534,8 +2091,11 @@
         const chip = e.target.closest(".user-chip");
         const menu = document.getElementById("roleMenu");
         if (!chip && !menu.contains(e.target)) menu.classList.remove("open");
+        const bell = e.target.closest(".bell");
+        const notifMenu = document.getElementById("notifMenu");
+        if (!bell && notifMenu && !notifMenu.contains(e.target))
+          notifMenu.classList.remove("open");
       });
-
       function toggleSidebar(force) {
         const sb = document.getElementById("sidebar");
         const scrim = document.getElementById("sbScrim");
@@ -1544,12 +2104,9 @@
         sb.classList.toggle("open", open);
         scrim.classList.toggle("open", open);
       }
-
       function confirmLogout() {
         openModal(logoutModal());
       }
-
-      /* ============================= MODAL SYSTEM ============================= */
       function openModal(html) {
         document.getElementById("modalBody").innerHTML = html;
         document.getElementById("modalOverlay").classList.add("open");
@@ -1562,21 +2119,9 @@
       });
 
       function logoutModal() {
-        return `
-    <div style="text-align:center;">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--red-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-      </div>
-      <div style="font-weight:800; font-size:17px; margin-bottom:6px;">Log out of Centinel HR?</div>
-      <div style="color:var(--muted); font-size:13px; margin-bottom:20px;">You'll need to sign in again to access performance and development records.</div>
-      <div style="display:flex; gap:10px;">
-        <button class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Stay Logged In</button>
-        <button class="btn" style="flex:1; justify-content:center; background:var(--red); color:#fff;" onclick="toast('Logged out'); closeModal();">Log Out</button>
-      </div>
-    </div>`;
+        return `<div style="text-align:center;"><div style="width:56px;height:56px;border-radius:50%;background:var(--red-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div><div style="font-weight:800;font-size:17px;margin-bottom:6px;">Log out of Centinel HR?</div><div style="color:var(--muted);font-size:13px;margin-bottom:20px;">You'll need to sign in again to access performance and development records.</div><div style="display:flex;gap:10px;"><button class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Stay Logged In</button><button class="btn" style="flex:1;justify-content:center;background:var(--red);color:#fff;" onclick="toast('Logged out');closeModal();">Log Out</button></div></div>`;
       }
 
-      /* ============================= PAGE ROUTER ============================= */
       function renderPage(page) {
         switch (page) {
           case "dashboard":
@@ -1584,13 +2129,13 @@
               ? empDashboard()
               : mgrOrHrDashboard();
           case "reviews":
-            return renderReviews();
+            return renderReviews() + renderFeedback();
+          case "customerReviews":
+            return renderCustomerReviews();
           case "goals":
             return renderGoals();
           case "training":
             return renderTraining();
-          case "feedback":
-            return renderFeedback();
           case "skills":
             return renderSkills();
           case "reports":
@@ -1606,7 +2151,6 @@
         }
       }
 
-      /* ============================= DASHBOARD ============================= */
       function empDashboard() {
         const gs = myGoals();
         const avgProgress = Math.round(
@@ -1619,73 +2163,29 @@
         const avgFb = (
           fb.reduce((a, f) => a + f.rating, 0) / fb.length
         ).toFixed(1);
-
-        return `
-  <div style="margin-bottom:20px;">
-    <div style="font-size:24px; font-weight:800; font-family:'Be Vietnam Pro',sans-serif;">Welcome back, <span class="font-script" style="font-size:32px; font-weight:400; color:var(--accent); text-transform:none; letter-spacing:0;">${currentUsers.employee.name.split(" ")[0]}</span>!</div>
-    <div style="color:var(--muted); font-size:13.5px;">Here's where your growth stands this cycle.</div>
+        const sk = mySkills().slice(0, 4);
+        const skAvg = (sk.reduce((a, s) => a + s.mgr, 0) / sk.length).toFixed(
+          1,
+        );
+        const skillIcon = (name) => name.trim().charAt(0).toUpperCase();
+        return `<div style="margin-bottom:20px;"><div style="font-size:24px;font-weight:800;font-family:'Be Vietnam Pro',sans-serif;">Welcome back, <span class="font-script" style="font-size:32px;font-weight:400;color:var(--accent);text-transform:none;letter-spacing:0;">${currentUsers.employee.name.split(" ")[0]}</span>!</div><div style="color:var(--muted);font-size:13.5px;">Here's where your growth stands this cycle.</div></div>
+<div class="grid-cols-auto" style="margin-bottom:20px;">
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">GOALS AVG PROGRESS</div><div style="font-size:28px;font-weight:800;margin:6px 0;">${avgProgress}%</div><div class="progress-track"><div class="progress-fill" style="width:${avgProgress}%"></div></div></div>
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">CURRENT REVIEW</div><div style="font-size:22px;font-weight:800;margin:6px 0;">${rev.overall ? rev.overall + " / 5.0" : "—"}</div>${statusBadge(rev.status)}</div>
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">TRAININGS COMPLETED</div><div style="font-size:28px;font-weight:800;margin:6px 0;">${trainingDone} <span style="font-size:14px;color:var(--muted);font-weight:600;">/ ${en.length}</span></div></div>
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">FEEDBACK RATING</div><div style="font-size:22px;font-weight:800;margin:6px 0;">${avgFb} / 5.0</div>${stars(avgFb)}</div>
+</div>
+<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div style="font-weight:800;font-size:15px;">My Goals This Cycle</div><button class="btn btn-outline" style="padding:6px 12px;font-size:11.5px;" onclick="navigate('goals')">View All</button></div>
+    ${gs.map((g) => `<div style="padding:12px 0;border-bottom:1px solid var(--border);"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><div style="font-weight:700;font-size:13.5px;">${g.title}</div>${statusBadge(g.status)}</div><div class="progress-track"><div class="progress-fill" style="width:${g.progress}%"></div></div><div style="font-size:11px;color:var(--muted);margin-top:4px;">${g.progress}% complete · Due ${g.due}</div></div>`).join("")}
   </div>
-
-  <div class="grid-cols-auto" style="margin-bottom:20px;">
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">GOALS AVG PROGRESS</div>
-      <div style="font-size:28px; font-weight:800; margin:6px 0;">${avgProgress}%</div>
-      <div class="progress-track"><div class="progress-fill" style="width:${avgProgress}%"></div></div>
-    </div>
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">CURRENT REVIEW</div>
-      <div style="font-size:22px; font-weight:800; margin:6px 0;">${rev.overall ? rev.overall + " / 5.0" : "—"}</div>
-      ${statusBadge(rev.status)}
-    </div>
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">TRAININGS COMPLETED</div>
-      <div style="font-size:28px; font-weight:800; margin:6px 0;">${trainingDone} <span style="font-size:14px; color:var(--muted); font-weight:600;">/ ${en.length}</span></div>
-    </div>
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">FEEDBACK RATING</div>
-      <div style="font-size:22px; font-weight:800; margin:6px 0;">${avgFb} / 5.0</div>
-      ${stars(avgFb)}
-    </div>
+  <div class="soft-card">
+    <div class="dev-snapshot-head"><div style="font-weight:800;font-size:15px;">Development Snapshot</div><div class="dev-snapshot-avg"><span class="num">${skAvg}</span><span class="denom">/5 avg</span></div></div>
+    ${sk.map((s) => `<div class="dev-skill-row"><div class="dev-skill-icon">${skillIcon(s.skill)}</div><div class="dev-skill-main"><div class="dev-skill-top"><span class="dev-skill-name">${s.skill}</span><span class="dev-skill-score">${s.mgr}/5</span></div><div class="dev-skill-track"><div class="dev-skill-fill" style="width:${s.mgr * 20}%"></div></div></div></div>`).join("")}
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" onclick="navigate('reviews')">View Full Skills Profile</button>
   </div>
-
-  <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:16px;">
-    <div class="card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <div style="font-weight:800; font-size:15px;">My Goals This Cycle</div>
-        <button class="btn btn-outline" style="padding:6px 12px; font-size:11.5px;" onclick="navigate('goals')">View All</button>
-      </div>
-      ${gs
-        .map(
-          (g) => `
-        <div style="padding:12px 0; border-bottom:1px solid var(--border);">
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <div style="font-weight:700; font-size:13.5px;">${g.title}</div>
-            ${statusBadge(g.status)}
-          </div>
-          <div class="progress-track"><div class="progress-fill" style="width:${g.progress}%"></div></div>
-          <div style="font-size:11px; color:var(--muted); margin-top:4px;">${g.progress}% complete · Due ${g.due}</div>
-        </div>
-      `,
-        )
-        .join("")}
-    </div>
-
-    <div class="soft-card">
-      <div style="font-weight:800; font-size:15px; margin-bottom:14px;">Development Snapshot</div>
-      ${mySkills()
-        .slice(0, 4)
-        .map(
-          (s) => `
-        <div style="margin-bottom:12px;">
-          <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span>${s.skill}</span><span style="color:#8fb6d9;">${s.mgr}/5</span></div>
-          <div style="height:6px; border-radius:99px; background:rgba(255,255,255,.14);"><div style="height:100%; border-radius:99px; width:${s.mgr * 20}%; background:var(--accent-2);"></div></div>
-        </div>
-      `,
-        )
-        .join("")}
-      <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" onclick="navigate('skills')">View Full Skills Profile</button>
-    </div>
-  </div>`;
+</div>`;
       }
 
       function mgrOrHrDashboard() {
@@ -1693,7 +2193,7 @@
         const scopeGoals = isHr
           ? goals
           : goals.filter((g) => teamIds().includes(g.employeeId));
-        const scopeReviews = isHr ? reviews : reviews;
+        const scopeReviews = reviews;
         const completedReviews = scopeReviews.filter(
           (r) => r.status === "Completed",
         ).length;
@@ -1705,182 +2205,99 @@
           scopeGoals.reduce((a, g) => a + g.progress, 0) / scopeGoals.length,
         );
         const scopeTeam = isHr ? team : team.filter((t) => t.id !== "EMP-1005");
-
-        return `
-  <div style="margin-bottom:20px;">
-    <div style="font-size:22px; font-weight:800;">${isHr ? "Organization Overview" : "Team Overview"}</div>
-    <div style="color:var(--muted); font-size:13.5px;">${isHr ? "Company-wide performance and development snapshot." : "How your team is tracking this cycle."}</div>
-  </div>
-
-  <div class="grid-cols-auto" style="margin-bottom:20px;">
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">${isHr ? "EMPLOYEES" : "TEAM SIZE"}</div>
-      <div style="font-size:28px; font-weight:800; margin:6px 0;">${scopeTeam.length}</div>
-    </div>
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">REVIEWS COMPLETED</div>
-      <div style="font-size:28px; font-weight:800; margin:6px 0;">${completedReviews}<span style="font-size:14px; color:var(--muted); font-weight:600;"> / ${scopeReviews.length}</span></div>
-      ${overdue > 0 ? `<span class="badge badge-red">${overdue} overdue</span>` : `<span class="badge badge-green">On schedule</span>`}
-    </div>
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">AVG GOAL PROGRESS</div>
-      <div style="font-size:28px; font-weight:800; margin:6px 0;">${avgGoal}%</div>
-      <div class="progress-track"><div class="progress-fill" style="width:${avgGoal}%"></div></div>
-    </div>
-    <div class="card">
-      <div style="color:var(--muted); font-size:12px; font-weight:700;">GOALS AT RISK</div>
-      <div style="font-size:28px; font-weight:800; margin:6px 0; color:${atRisk > 0 ? "var(--amber)" : "inherit"};">${atRisk}</div>
-      ${atRisk > 0 ? `<span class="badge badge-amber">Needs attention</span>` : `<span class="badge badge-green">All clear</span>`}
-    </div>
-  </div>
-
-  <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:16px;">
-    <div class="card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <div style="font-weight:800; font-size:15px;">${isHr ? "Review Cycle Status" : "Team Review Status"}</div>
-        <button class="btn btn-outline" style="padding:6px 12px; font-size:11.5px;" onclick="navigate('reviews')">Manage</button>
-      </div>
-      ${scopeReviews
-        .map(
-          (r) => `
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border);">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <div class="avatar-ring">${empById(r.employeeId).initials}</div>
-            <div>
-              <div style="font-weight:700; font-size:13px;">${empById(r.employeeId).name}</div>
-              <div style="font-size:11px; color:var(--muted);">${r.date}</div>
-            </div>
-          </div>
-          ${statusBadge(r.status)}
-        </div>
-      `,
-        )
-        .join("")}
-    </div>
-    <div class="card">
-      <div style="font-weight:800; font-size:15px; margin-bottom:12px;">Recent 360° Feedback</div>
-      ${feedbackList
-        .slice(0, 4)
-        .map(
-          (f) => `
-        <div style="padding:10px 0; border-bottom:1px solid var(--border);">
-          <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:700;">
-            <span>${empById(f.aboutId).name}</span><span>${stars(f.rating)}</span>
-          </div>
-          <div style="font-size:11.5px; color:var(--muted); margin-top:3px;">"${f.comment.slice(0, 70)}${f.comment.length > 70 ? "…" : ""}"</div>
-        </div>
-      `,
-        )
-        .join("")}
-    </div>
-  </div>`;
+        return `<div style="margin-bottom:20px;"><div style="font-size:22px;font-weight:800;">${isHr ? "Organization Overview" : "Team Overview"}</div><div style="color:var(--muted);font-size:13.5px;">${isHr ? "Company-wide performance and development snapshot." : "How your team is tracking this cycle."}</div></div>
+<div class="grid-cols-auto" style="margin-bottom:20px;">
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">${isHr ? "EMPLOYEES" : "TEAM SIZE"}</div><div style="font-size:28px;font-weight:800;margin:6px 0;">${scopeTeam.length}</div></div>
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">REVIEWS COMPLETED</div><div style="font-size:28px;font-weight:800;margin:6px 0;">${completedReviews}<span style="font-size:14px;color:var(--muted);font-weight:600;"> / ${scopeReviews.length}</span></div>${overdue > 0 ? `<span class="badge badge-red">${overdue} overdue</span>` : `<span class="badge badge-green">On schedule</span>`}</div>
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">AVG GOAL PROGRESS</div><div style="font-size:28px;font-weight:800;margin:6px 0;">${avgGoal}%</div><div class="progress-track"><div class="progress-fill" style="width:${avgGoal}%"></div></div></div>
+  <div class="card"><div style="color:var(--muted);font-size:12px;font-weight:700;">GOALS AT RISK</div><div style="font-size:28px;font-weight:800;margin:6px 0;color:${atRisk > 0 ? "var(--amber)" : "inherit"};">${atRisk}</div>${atRisk > 0 ? `<span class="badge badge-amber">Needs attention</span>` : `<span class="badge badge-green">All clear</span>`}</div>
+</div>
+<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;">
+  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div style="font-weight:800;font-size:15px;">${isHr ? "Review Cycle Status" : "Team Review Status"}</div><button class="btn btn-outline" style="padding:6px 12px;font-size:11.5px;" onclick="navigate('reviews')">Manage</button></div>${scopeReviews.map((r) => `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);"><div style="display:flex;align-items:center;gap:10px;"><div class="avatar-ring">${empById(r.employeeId).initials}</div><div><div style="font-weight:700;font-size:13px;">${empById(r.employeeId).name}</div><div style="font-size:11px;color:var(--muted);">${r.date}</div></div></div>${statusBadge(r.status)}</div>`).join("")}</div>
+  <div class="card"><div style="font-weight:800;font-size:15px;margin-bottom:12px;">Recent 360° Feedback</div>${feedbackList
+    .slice(0, 4)
+    .map(
+      (f) =>
+        `<div style="padding:10px 0;border-bottom:1px solid var(--border);"><div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;"><span>${empById(f.aboutId).name}</span><span>${stars(f.rating)}</span></div><div style="font-size:11.5px;color:var(--muted);margin-top:3px;">"${f.comment.slice(0, 70)}${f.comment.length > 70 ? "…" : ""}"</div></div>`,
+    )
+    .join("")}</div>
+</div>`;
       }
 
-      /* ============================= REVIEWS ============================= */
       function renderReviews() {
         if (currentRole === "employee") {
           const r = myReview();
-          return `
-    <div class="card" style="margin-bottom:18px;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
-        <div>
-          <div style="font-weight:800; font-size:16px;">${r.cycle} Performance Review</div>
-          <div style="color:var(--muted); font-size:12.5px; margin-top:2px;">Reviewer: ${r.reviewer} · ${r.date}</div>
-        </div>
-        ${statusBadge(r.status)}
-      </div>
-      ${
-        r.overall
-          ? `
-      <div style="display:flex; align-items:center; gap:14px; margin-top:16px;">
-        <div style="font-size:36px; font-weight:800; color:var(--accent);">${r.overall}</div>
-        <div>
-          <div style="font-size:12.5px; font-weight:700;">Overall Rating out of 5.0</div>
-          ${stars(r.overall)}
-        </div>
-      </div>`
-          : `<div style="margin-top:14px; color:var(--muted); font-size:13px;">This review hasn't been completed yet. Check back after ${r.date.replace("Scheduled ", "")}.</div>`
-      }
-    </div>
-    ${
-      r.overall
-        ? `
-    <div class="card">
-      <div style="font-weight:800; font-size:14.5px; margin-bottom:14px;">Competency Breakdown</div>
-      ${r.comps
-        .map(
-          (c) => `
-        <div style="margin-bottom:14px;">
-          <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span style="font-weight:600;">${c.name}</span><span style="color:var(--muted);">${c.score.toFixed(1)}/5.0</span></div>
-          <div class="progress-track"><div class="progress-fill" style="width:${(c.score / 5) * 100}%"></div></div>
-        </div>
-      `,
-        )
-        .join("")}
-    </div>`
-        : ""
-    }`;
-        }
-
-        // manager / hradmin
-        const scope = currentRole === "hradmin" ? reviews : reviews;
-        return `
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-    <div style="color:var(--muted); font-size:13px;">${scope.length} reviews in the <strong>Mid-Year 2026</strong> cycle</div>
-    ${currentRole === "hradmin" ? `<button class="btn btn-primary" onclick="openModal(newCycleModal())">${iconSvg("reviews")} Launch New Cycle</button>` : ""}
+          const sk = mySkills();
+          return `<div class="card" style="margin-bottom:18px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;"><div><div style="font-weight:800;font-size:16px;">${r.cycle} Performance Review</div><div style="color:var(--muted);font-size:12.5px;margin-top:2px;">Reviewer: ${r.reviewer} · ${r.date}</div></div>${statusBadge(r.status)}</div>${r.overall ? `<div style="display:flex;align-items:center;gap:14px;margin-top:16px;"><div style="font-size:36px;font-weight:800;color:var(--accent);">${r.overall}</div><div><div style="font-size:12.5px;font-weight:700;">Overall Rating out of 5.0</div>${stars(r.overall)}</div></div>` : `<div style="margin-top:14px;color:var(--muted);font-size:13px;">This review hasn't been completed yet. Check back after ${r.date.replace("Scheduled ", "")}.`}</div>
+${
+  r.overall
+    ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+  <div class="card">
+    <div style="font-weight:800;font-size:14.5px;margin-bottom:4px;">Competency Breakdown</div>
+    <div style="color:var(--muted);font-size:11.5px;margin-bottom:14px;">From your ${r.cycle} performance review.</div>
+    ${r.comps.map((c) => `<div style="margin-bottom:14px;"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">${c.name}</span><span style="color:var(--muted);">${c.score.toFixed(1)}/5.0</span></div><div class="progress-track"><div class="progress-fill" style="width:${(c.score / 5) * 100}%"></div></div></div>`).join("")}
   </div>
-  <div class="card" style="padding:0; overflow:hidden;">
+  <div class="card">
+    <div style="font-weight:800;font-size:14.5px;margin-bottom:4px;">Manager Ratings</div>
+    <div style="color:var(--muted);font-size:11.5px;margin-bottom:14px;">Competency ratings set by your manager based on observed performance.</div>
+    ${sk.map((s) => `<div style="margin-bottom:14px;"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span style="font-weight:600;">${s.skill}</span><span style="color:var(--muted);">${s.mgr}/5.0</span></div><div class="progress-track"><div class="progress-fill" style="width:${s.mgr * 20}%"></div></div></div>`).join("")}
+  </div>
+</div>`
+    : ""
+}`;
+        }
+        const scope = reviews;
+        return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+  <div style="color:var(--muted);font-size:13px;">${scope.length} reviews in the <strong>Mid-Year 2026</strong> cycle</div>
+  ${currentRole === "hradmin" ? `<button class="btn btn-primary" onclick="openModal(newCycleModal())">${iconSvg("reviews")} Launch New Cycle</button>` : ""}
+</div>
+<div class="card" style="padding:0;overflow:hidden;overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;min-width:700px;table-layout:fixed;">
+    <colgroup><col style="width:260px"><col style="width:195px"><col style="width:110px"><col style="width:130px"><col></colgroup>
+    <thead>
+      <tr style="background:#f8fafc;border-bottom:2px solid var(--border);">
+        <th style="text-align:left;padding:12px 20px;font-size:11px;color:var(--muted);font-weight:700;">EMPLOYEE</th>
+        <th style="text-align:left;padding:12px 16px;font-size:11px;color:var(--muted);font-weight:700;">DATE</th>
+        <th style="text-align:left;padding:12px 16px;font-size:11px;color:var(--muted);font-weight:700;">RATING</th>
+        <th style="text-align:left;padding:12px 16px;font-size:11px;color:var(--muted);font-weight:700;">STATUS</th>
+        <th style="text-align:right;padding:12px 20px;"></th>
+      </tr>
+    </thead>
+    <tbody>
     ${scope
       .map(
         (r) => `
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:10px;">
-        <div style="display:flex; align-items:center; gap:12px; min-width:220px;">
-          <div class="avatar-ring">${empById(r.employeeId).initials}</div>
-          <div>
-            <div style="font-weight:700; font-size:13.5px;">${empById(r.employeeId).name}</div>
-            <div style="font-size:11.5px; color:var(--muted);">${empById(r.employeeId).position}</div>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:14px 20px;vertical-align:middle;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="avatar-ring" style="flex-shrink:0;">${empById(r.employeeId).initials}</div>
+            <div style="min-width:0;overflow:hidden;">
+              <div style="font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${empById(r.employeeId).name}</div>
+              <div style="font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${empById(r.employeeId).position}</div>
+            </div>
           </div>
-        </div>
-        <div style="font-size:12.5px; color:var(--muted); min-width:150px;">${r.date}</div>
-        <div style="min-width:90px;">${r.overall ? r.overall + " / 5.0" : "—"}</div>
-        ${statusBadge(r.status)}
-        <button class="btn btn-ghost" style="padding:7px 14px; font-size:12px;" onclick="openModal(reviewFormModal('${r.id}'))">
-          ${r.status === "Completed" ? "View" : "Conduct Review"}
-        </button>
-      </div>
-    `,
+        </td>
+        <td style="padding:14px 16px;font-size:12.5px;color:var(--muted);vertical-align:middle;white-space:nowrap;">${r.date}</td>
+        <td style="padding:14px 16px;font-size:13px;font-weight:700;vertical-align:middle;">${r.overall ? r.overall + " / 5.0" : "—"}</td>
+        <td style="padding:14px 16px;vertical-align:middle;">${statusBadge(r.status)}</td>
+        <td style="padding:14px 20px;text-align:right;vertical-align:middle;">
+          <button class="btn btn-ghost" style="padding:7px 14px;font-size:12px;white-space:nowrap;" onclick="openModal(reviewFormModal('${r.id}'))">
+            ${r.status === "Completed" ? "View" : "Conduct Review"}
+          </button>
+        </td>
+      </tr>`,
       )
       .join("")}
-  </div>`;
+    </tbody>
+  </table>
+</div>`;
       }
 
       function reviewFormModal(reviewId) {
         const r = reviews.find((x) => x.id === reviewId);
         const emp = empById(r.employeeId);
         const readonly = r.status === "Completed";
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:2px;">${readonly ? "Review" : "Conduct Review"} — ${emp.name}</div>
-  <div style="color:var(--muted); font-size:12.5px; margin-bottom:18px;">${r.cycle} · ${emp.position}</div>
-  <form onsubmit="submitReview(event,'${reviewId}')">
-    ${r.comps
-      .map(
-        (c, i) => `
-      <div style="margin-bottom:14px;">
-        <label class="field-label">${c.name}</label>
-        <select class="field-select" id="comp-${i}" ${readonly ? "disabled" : ""}>
-          ${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${(readonly ? c.score : c.score) === n ? "selected" : ""}>${n} — ${["Needs Improvement", "Developing", "Meets Expectations", "Exceeds Expectations", "Outstanding"][n - 1]}</option>`).join("")}
-        </select>
-      </div>
-    `,
-      )
-      .join("")}
-    <label class="field-label">Overall Comments</label>
-    <textarea class="field-textarea" ${readonly ? "disabled" : ""} placeholder="Summarize strengths and areas for growth...">${readonly ? "Strong performance this cycle with consistent client feedback." : ""}</textarea>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Close</button>
-      ${readonly ? "" : `<button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Submit Review</button>`}
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:2px;">${readonly ? "Review" : "Conduct Review"} — ${emp.name}</div><div style="color:var(--muted);font-size:12.5px;margin-bottom:18px;">${r.cycle} · ${emp.position}</div><form onsubmit="submitReview(event,'${reviewId}')">${r.comps.map((c, i) => `<div style="margin-bottom:14px;"><label class="field-label">${c.name}</label><select class="field-select" id="comp-${i}" ${readonly ? "disabled" : ""}>${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${c.score === n ? "selected" : ""}>${n} — ${["Needs Improvement", "Developing", "Meets Expectations", "Exceeds Expectations", "Outstanding"][n - 1]}</option>`).join("")}</select></div>`).join("")}<label class="field-label">Overall Comments</label><textarea class="field-textarea" ${readonly ? "disabled" : ""} placeholder="Summarize strengths and areas for growth...">${readonly ? "Strong performance this cycle with consistent client feedback." : ""}</textarea><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Close</button>${readonly ? "" : `<button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Submit Review</button>`}</div></form>`;
       }
       function submitReview(e, reviewId) {
         e.preventDefault();
@@ -1899,102 +2316,26 @@
         toast("Review submitted");
       }
       function newCycleModal() {
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Launch New Review Cycle</div>
-  <form onsubmit="event.preventDefault(); closeModal(); toast('Review cycle launched for all employees');">
-    <label class="field-label">Cycle Name</label>
-    <input class="field-input" placeholder="e.g. Year-End 2026" required>
-    <label class="field-label">Review Period</label>
-    <div style="display:flex; gap:10px;">
-      <input class="field-input" type="date" required>
-      <input class="field-input" type="date" required>
-    </div>
-    <label class="field-label">Include Departments</label>
-    <select class="field-select"><option>All Departments</option><option>Sales & Bookings</option><option>Operations</option><option>Support</option><option>Partnerships</option></select>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Launch Cycle</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Launch New Review Cycle</div><form onsubmit="event.preventDefault();closeModal();toast('Review cycle launched for all employees');"><label class="field-label">Cycle Name</label><input class="field-input" placeholder="e.g. Year-End 2026" required><label class="field-label">Review Period</label><div style="display:flex;gap:10px;"><input class="field-input" type="date" required><input class="field-input" type="date" required></div><label class="field-label">Include Departments</label><select class="field-select"><option>All Departments</option><option>Sales & Bookings</option><option>Operations</option><option>Support</option><option>Partnerships</option></select><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Launch Cycle</button></div></form>`;
       }
 
-      /* ============================= GOALS ============================= */
       function renderGoals() {
         const isEmp = currentRole === "employee";
+        const canUpdateProgress = currentRole === "manager";
         const scope = isEmp
           ? myGoals()
           : currentRole === "manager"
             ? goals.filter((g) => teamIds().includes(g.employeeId))
             : goals;
-        return `
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-    <div style="color:var(--muted); font-size:13px;">${scope.length} goal${scope.length !== 1 ? "s" : ""} tracked this cycle</div>
-    <button class="btn btn-primary" onclick="openModal(goalFormModal())">${iconSvg("goals")} Add Goal</button>
-  </div>
-  <div class="grid-cols-auto">
-    ${scope
-      .map(
-        (g) => `
-      <div class="card">
-        <div style="display:flex; justify-content:space-between; gap:8px; margin-bottom:8px;">
-          <span class="badge badge-blue">${g.category}</span>
-          ${statusBadge(g.status)}
-        </div>
-        <div style="font-weight:700; font-size:14px; line-height:1.35; margin-bottom:10px;">${g.title}</div>
-        ${!isEmp ? `<div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;"><div class="avatar-ring" style="width:24px;height:24px;font-size:10px;">${empById(g.employeeId).initials}</div><span style="font-size:12px; color:var(--muted);">${empById(g.employeeId).name}</span></div>` : ""}
-        <div class="progress-track"><div class="progress-fill" style="width:${g.progress}%"></div></div>
-        <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:11.5px; color:var(--muted);">
-          <span>${g.progress}% complete</span><span>Due ${g.due}</span>
-        </div>
-        ${isEmp ? `<button class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:12px; font-size:12px;" onclick="openModal(updateProgressModal('${g.id}'))">Update Progress</button>` : ""}
-      </div>
-    `,
-      )
-      .join("")}
-  </div>`;
+        return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;"><div style="color:var(--muted);font-size:13px;">${scope.length} goal${scope.length !== 1 ? "s" : ""} tracked this cycle</div>${!isEmp ? `<button class="btn btn-primary" onclick="openModal(goalFormModal())">${iconSvg("goals")} Add Goal</button>` : ""}</div><div class="grid-cols-auto">${scope.map((g) => `<div class="card"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:8px;"><span class="badge badge-blue">${g.category}</span>${statusBadge(g.status)}</div><div style="font-weight:700;font-size:14px;line-height:1.35;margin-bottom:10px;">${g.title}</div>${!isEmp ? `<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><div class="avatar-ring" style="width:24px;height:24px;font-size:10px;">${empById(g.employeeId).initials}</div><span style="font-size:12px;color:var(--muted);">${empById(g.employeeId).name}</span></div>` : ""}<div class="progress-track"><div class="progress-fill" style="width:${g.progress}%"></div></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11.5px;color:var(--muted);"><span>${g.progress}% complete</span><span>Due ${g.due}</span></div>${canUpdateProgress ? `<button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:12px;font-size:12px;" onclick="openModal(updateProgressModal('${g.id}'))">Update Progress</button>` : ""}</div>`).join("")}</div>`;
       }
       function goalFormModal() {
         const isEmp = currentRole === "employee";
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Add New Goal</div>
-  <form onsubmit="event.preventDefault(); closeModal(); toast('Goal added');">
-    ${
-      !isEmp
-        ? `<label class="field-label">Assign To</label>
-    <select class="field-select">${(currentRole === "manager" ? team.filter((t) => t.id !== "EMP-1005") : team).map((t) => `<option>${t.name}</option>`).join("")}</select>`
-        : ""
-    }
-    <label class="field-label">Goal Title</label>
-    <input class="field-input" placeholder="e.g. Improve response time to under 2 hours" required>
-    <label class="field-label">Category</label>
-    <select class="field-select"><option>Customer Focus</option><option>Skill Growth</option><option>Quality</option><option>Business Impact</option><option>Efficiency</option><option>Leadership</option></select>
-    <label class="field-label">Due Date</label>
-    <input class="field-input" type="date" required>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Save Goal</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Add New Goal</div><form onsubmit="event.preventDefault();closeModal();toast('Goal added');">${!isEmp ? `<label class="field-label">Assign To</label><select class="field-select">${(currentRole === "manager" ? team.filter((t) => t.id !== "EMP-1005") : team).map((t) => `<option>${t.name}</option>`).join("")}</select>` : ""}<label class="field-label">Goal Title</label><input class="field-input" placeholder="e.g. Improve response time to under 2 hours" required><label class="field-label">Category</label><select class="field-select"><option>Customer Focus</option><option>Skill Growth</option><option>Quality</option><option>Business Impact</option><option>Efficiency</option><option>Leadership</option></select><label class="field-label">Due Date</label><input class="field-input" type="date" required><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Save Goal</button></div></form>`;
       }
       function updateProgressModal(goalId) {
         const g = goals.find((x) => x.id === goalId);
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:4px;">Update Progress</div>
-  <div style="color:var(--muted); font-size:12.5px; margin-bottom:18px;">${g.title}</div>
-  <form onsubmit="updateGoalProgress(event,'${goalId}')">
-    <label class="field-label">Progress: <span id="progLabel">${g.progress}%</span></label>
-    <input type="range" min="0" max="100" value="${g.progress}" id="progSlider" style="width:100%; margin-bottom:16px;" oninput="document.getElementById('progLabel').textContent=this.value+'%'">
-    <label class="field-label">Status</label>
-    <select class="field-select" id="progStatus">
-      <option ${g.status === "On Track" ? "selected" : ""}>On Track</option>
-      <option ${g.status === "At Risk" ? "selected" : ""}>At Risk</option>
-      <option ${g.status === "Completed" ? "selected" : ""}>Completed</option>
-    </select>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Save Update</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:4px;">Update Progress</div><div style="color:var(--muted);font-size:12.5px;margin-bottom:18px;">${g.title}</div><form onsubmit="updateGoalProgress(event,'${goalId}')"><label class="field-label">Progress: <span id="progLabel">${g.progress}%</span></label><input type="range" min="0" max="100" value="${g.progress}" id="progSlider" style="width:100%;margin-bottom:16px;" oninput="document.getElementById('progLabel').textContent=this.value+'%'"><label class="field-label">Status</label><select class="field-select" id="progStatus"><option ${g.status === "On Track" ? "selected" : ""}>On Track</option><option ${g.status === "At Risk" ? "selected" : ""}>At Risk</option><option ${g.status === "Completed" ? "selected" : ""}>Completed</option></select><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Save Update</button></div></form>`;
       }
       function updateGoalProgress(e, goalId) {
         e.preventDefault();
@@ -2006,7 +2347,6 @@
         toast("Goal progress updated");
       }
 
-      /* ============================= TRAINING ============================= */
       function renderTraining() {
         const isEmp = currentRole === "employee";
         if (isEmp) {
@@ -2015,92 +2355,35 @@
           const available = trainingCatalog.filter(
             (t) => !enrolledIds.includes(t.id),
           );
-          return `
-    <div class="tab-row">
-      <button class="tab-btn active" data-tab="my">My Learning</button>
-      <button class="tab-btn" data-tab="catalog">Course Catalog</button>
-    </div>
-    <div id="my-panel">
-      <div class="grid-cols-auto">
-        ${en
+          return `<div class="tab-row"><button class="tab-btn active" data-tab="my">My Learning</button><button class="tab-btn" data-tab="catalog">Course Catalog</button></div><div id="my-panel"><div style="color:var(--muted);font-size:12px;margin-bottom:12px;">Your progress is tracked and updated by your manager or HR as you complete each course.</div><div class="grid-cols-auto">${en
+            .map((e) => {
+              const t = trainingCatalog.find((x) => x.id === e.trainingId);
+              return `<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span class="badge badge-blue">${t.category}</span>${statusBadge(e.status)}</div><div style="font-weight:700;font-size:14px;margin-bottom:6px;">${t.title}</div><div style="font-size:12px;color:var(--muted);margin-bottom:10px;">${t.duration}</div><div class="progress-track"><div class="progress-fill" style="width:${e.progress}%"></div></div><div style="font-size:11.5px;color:var(--muted);margin-top:6px;">${e.progress}% complete</div></div>`;
+            })
+            .join(
+              "",
+            )}</div></div><div id="catalog-panel" style="display:none;"><div class="grid-cols-auto">${available.map((t) => `<div class="card"><div style="margin-bottom:8px;"><span class="badge ${t.mandatory ? "badge-red" : "badge-blue"}">${t.mandatory ? "Mandatory" : t.category}</span></div><div style="font-weight:700;font-size:14px;margin-bottom:6px;">${t.title}</div><div style="font-size:12px;color:var(--muted);margin-bottom:14px;">${t.duration}</div><button class="btn btn-primary" style="width:100%;justify-content:center;font-size:12.5px;" onclick="enrollTraining('${t.id}')">Enroll</button></div>`).join("")}${available.length === 0 ? `<div style="color:var(--muted);font-size:13px;">You're enrolled in every course in the catalog. Nice work.</div>` : ""}</div></div>`;
+        }
+        return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;"><div style="color:var(--muted);font-size:13px;">${trainingCatalog.length} courses in catalog · ${enrollments.length} active enrollments</div>${currentRole === "hradmin" ? `<button class="btn btn-primary" onclick="openModal(newCourseModal())">${iconSvg("training")} Add Course</button>` : `<button class="btn btn-primary" onclick="openModal(assignTrainingModal())">${iconSvg("training")} Assign Training</button>`}</div><div class="card" style="margin-bottom:18px;"><div style="font-weight:800;font-size:14.5px;margin-bottom:12px;">Course Catalog</div><div class="grid-cols-auto">${trainingCatalog
+          .map((t) => {
+            const count = enrollments.filter(
+              (e) => e.trainingId === t.id,
+            ).length;
+            return `<div style="border:1px solid var(--border);border-radius:12px;padding:14px;"><span class="badge ${t.mandatory ? "badge-red" : "badge-blue"}">${t.mandatory ? "Mandatory" : t.category}</span><div style="font-weight:700;font-size:13.5px;margin:8px 0 4px;">${t.title}</div><div style="font-size:11.5px;color:var(--muted);">${t.duration} · ${count} enrolled</div></div>`;
+          })
+          .join(
+            "",
+          )}</div></div><div class="card" style="padding:0;overflow:hidden;"><div style="font-weight:800;font-size:14.5px;padding:16px 20px 0;">Team Progress</div><div style="font-size:11.5px;color:var(--muted);padding:4px 20px 12px;">Update learners' progress as they complete each stage of a course.</div>${enrollments
+          .filter(
+            (e) =>
+              currentRole === "hradmin" || teamIds().includes(e.employeeId),
+          )
           .map((e) => {
             const t = trainingCatalog.find((x) => x.id === e.trainingId);
-            return `
-          <div class="card">
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-              <span class="badge badge-blue">${t.category}</span>
-              ${statusBadge(e.status)}
-            </div>
-            <div style="font-weight:700; font-size:14px; margin-bottom:6px;">${t.title}</div>
-            <div style="font-size:12px; color:var(--muted); margin-bottom:10px;">${t.duration}</div>
-            <div class="progress-track"><div class="progress-fill" style="width:${e.progress}%"></div></div>
-            <div style="font-size:11.5px; color:var(--muted); margin-top:6px;">${e.progress}% complete</div>
-            ${e.status !== "Completed" ? `<button class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:12px; font-size:12px;" onclick="advanceTraining('${e.trainingId}')">Continue Course</button>` : ""}
-          </div>`;
+            const emp = empById(e.employeeId);
+            return `<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-top:1px solid var(--border);flex-wrap:wrap;gap:10px;"><div style="display:flex;align-items:center;gap:10px;min-width:200px;"><div class="avatar-ring">${emp.initials}</div><div><div style="font-weight:700;font-size:13px;">${emp.name}</div><div style="font-size:11px;color:var(--muted);">${t.title}</div></div></div><div style="width:140px;"><div class="progress-track"><div class="progress-fill" style="width:${e.progress}%"></div></div></div>${statusBadge(e.status)}<button class="btn btn-ghost" style="padding:6px 12px;font-size:11.5px;" onclick="openModal(updateEnrollmentModal('${e.employeeId}','${e.trainingId}'))">Update Progress</button></div>`;
           })
-          .join("")}
-      </div>
-    </div>
-    <div id="catalog-panel" style="display:none;">
-      <div class="grid-cols-auto">
-        ${available
-          .map(
-            (t) => `
-          <div class="card">
-            <div style="margin-bottom:8px;"><span class="badge ${t.mandatory ? "badge-red" : "badge-blue"}">${t.mandatory ? "Mandatory" : t.category}</span></div>
-            <div style="font-weight:700; font-size:14px; margin-bottom:6px;">${t.title}</div>
-            <div style="font-size:12px; color:var(--muted); margin-bottom:14px;">${t.duration}</div>
-            <button class="btn btn-primary" style="width:100%; justify-content:center; font-size:12.5px;" onclick="enrollTraining('${t.id}')">Enroll</button>
-          </div>
-        `,
-          )
-          .join("")}
-        ${available.length === 0 ? `<div style="color:var(--muted); font-size:13px;">You're enrolled in every course in the catalog. Nice work.</div>` : ""}
-      </div>
-    </div>`;
-        }
-
-        // manager / hradmin — catalog + team progress
-        return `
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-    <div style="color:var(--muted); font-size:13px;">${trainingCatalog.length} courses in catalog · ${enrollments.length} active enrollments</div>
-    ${currentRole === "hradmin" ? `<button class="btn btn-primary" onclick="openModal(newCourseModal())">${iconSvg("training")} Add Course</button>` : `<button class="btn btn-primary" onclick="openModal(assignTrainingModal())">${iconSvg("training")} Assign Training</button>`}
-  </div>
-  <div class="card" style="margin-bottom:18px;">
-    <div style="font-weight:800; font-size:14.5px; margin-bottom:12px;">Course Catalog</div>
-    <div class="grid-cols-auto">
-    ${trainingCatalog
-      .map((t) => {
-        const count = enrollments.filter((e) => e.trainingId === t.id).length;
-        return `<div style="border:1px solid var(--border); border-radius:12px; padding:14px;">
-        <span class="badge ${t.mandatory ? "badge-red" : "badge-blue"}">${t.mandatory ? "Mandatory" : t.category}</span>
-        <div style="font-weight:700; font-size:13.5px; margin:8px 0 4px;">${t.title}</div>
-        <div style="font-size:11.5px; color:var(--muted);">${t.duration} · ${count} enrolled</div>
-      </div>`;
-      })
-      .join("")}
-    </div>
-  </div>
-  <div class="card" style="padding:0; overflow:hidden;">
-    <div style="font-weight:800; font-size:14.5px; padding:16px 20px 0;">Team Progress</div>
-    ${enrollments
-      .filter(
-        (e) => currentRole === "hradmin" || teamIds().includes(e.employeeId),
-      )
-      .map((e) => {
-        const t = trainingCatalog.find((x) => x.id === e.trainingId);
-        const emp = empById(e.employeeId);
-        return `<div style="display:flex; align-items:center; justify-content:space-between; padding:14px 20px; border-top:1px solid var(--border); flex-wrap:wrap; gap:10px;">
-        <div style="display:flex; align-items:center; gap:10px; min-width:200px;">
-          <div class="avatar-ring">${emp.initials}</div>
-          <div><div style="font-weight:700; font-size:13px;">${emp.name}</div><div style="font-size:11px; color:var(--muted);">${t.title}</div></div>
-        </div>
-        <div style="width:140px;"><div class="progress-track"><div class="progress-fill" style="width:${e.progress}%"></div></div></div>
-        ${statusBadge(e.status)}
-      </div>`;
-      })
-      .join("")}
-  </div>`;
+          .join("")}</div>`;
       }
       function bindTabs() {
         document.querySelectorAll(".tab-btn").forEach((btn) => {
@@ -2127,53 +2410,39 @@
         navigate("training");
         toast("Enrolled in course");
       }
-      function advanceTraining(trainingId) {
+      function updateEnrollmentModal(employeeId, trainingId) {
         const e = enrollments.find(
-          (x) =>
-            x.employeeId === currentUsers.employee.id &&
-            x.trainingId === trainingId,
+          (x) => x.employeeId === employeeId && x.trainingId === trainingId,
         );
-        e.progress = Math.min(100, e.progress + 25);
-        e.status = e.progress === 100 ? "Completed" : "In Progress";
+        const t = trainingCatalog.find((x) => x.id === trainingId);
+        const emp = empById(employeeId);
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:4px;">Update Training Progress</div><div style="color:var(--muted);font-size:12.5px;margin-bottom:18px;">${emp.name} · ${t.title}</div><form onsubmit="saveEnrollmentProgress(event,'${employeeId}','${trainingId}')"><label class="field-label">Progress: <span id="enrollProgLabel">${e.progress}%</span></label><input type="range" min="0" max="100" value="${e.progress}" id="enrollProgSlider" style="width:100%;margin-bottom:16px;" oninput="document.getElementById('enrollProgLabel').textContent=this.value+'%';document.getElementById('enrollStatusPreview').textContent=this.value==100?'Completed':(this.value==0?'Not Started':'In Progress');"><label class="field-label">Status: <span id="enrollStatusPreview">${e.status}</span></label><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Save Progress</button></div></form>`;
+      }
+      function saveEnrollmentProgress(e, employeeId, trainingId) {
+        e.preventDefault();
+        const en = enrollments.find(
+          (x) => x.employeeId === employeeId && x.trainingId === trainingId,
+        );
+        const val = Number(document.getElementById("enrollProgSlider").value);
+        en.progress = val;
+        en.status =
+          val === 100 ? "Completed" : val === 0 ? "Not Started" : "In Progress";
+        closeModal();
         navigate("training");
-        toast(e.progress === 100 ? "Course completed" : "Progress saved");
+        toast("Training progress updated");
       }
       function newCourseModal() {
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Add Course to Catalog</div>
-  <form onsubmit="event.preventDefault(); closeModal(); toast('Course added to catalog');">
-    <label class="field-label">Course Title</label>
-    <input class="field-input" placeholder="e.g. Negotiation Skills for Travel Consultants" required>
-    <label class="field-label">Category</label>
-    <select class="field-select"><option>Customer Service</option><option>Sales</option><option>Systems</option><option>Leadership</option><option>Compliance</option></select>
-    <label class="field-label">Duration & Format</label>
-    <input class="field-input" placeholder="e.g. 3 hrs · Online" required>
-    <label style="display:flex; align-items:center; gap:8px; font-size:13px; margin-bottom:16px;"><input type="checkbox"> Mark as mandatory</label>
-    <div style="display:flex; gap:10px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Add Course</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Add Course to Catalog</div><form onsubmit="event.preventDefault();closeModal();toast('Course added to catalog');"><label class="field-label">Course Title</label><input class="field-input" placeholder="e.g. Negotiation Skills for Travel Consultants" required><label class="field-label">Category</label><select class="field-select"><option>Customer Service</option><option>Sales</option><option>Systems</option><option>Leadership</option><option>Compliance</option></select><label class="field-label">Duration & Format</label><input class="field-input" placeholder="e.g. 3 hrs · Online" required><label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:16px;"><input type="checkbox"> Mark as mandatory</label><div style="display:flex;gap:10px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Add Course</button></div></form>`;
       }
       function assignTrainingModal() {
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Assign Training</div>
-  <form onsubmit="event.preventDefault(); closeModal(); toast('Training assigned');">
-    <label class="field-label">Team Member</label>
-    <select class="field-select">${team
-      .filter((t) => t.id !== "EMP-1005")
-      .map((t) => `<option>${t.name}</option>`)
-      .join("")}</select>
-    <label class="field-label">Course</label>
-    <select class="field-select">${trainingCatalog.map((t) => `<option>${t.title}</option>`).join("")}</select>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Assign</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Assign Training</div><form onsubmit="event.preventDefault();closeModal();toast('Training assigned');"><label class="field-label">Team Member</label><select class="field-select">${team
+          .filter((t) => t.id !== "EMP-1005")
+          .map((t) => `<option>${t.name}</option>`)
+          .join(
+            "",
+          )}</select><label class="field-label">Course</label><select class="field-select">${trainingCatalog.map((t) => `<option>${t.title}</option>`).join("")}</select><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Assign</button></div></form>`;
       }
 
-      /* ============================= FEEDBACK ============================= */
       function renderFeedback() {
         const isEmp = currentRole === "employee";
         const scope = isEmp
@@ -2184,54 +2453,14 @@
         const avg = scope.length
           ? (scope.reduce((a, f) => a + f.rating, 0) / scope.length).toFixed(1)
           : "—";
-        return `
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-    <div style="color:var(--muted); font-size:13px;">${scope.length} feedback entries · avg rating ${avg}</div>
-    <button class="btn btn-primary" onclick="openModal(giveFeedbackModal())">${iconSvg("feedback")} Give Feedback</button>
-  </div>
-  <div class="grid-cols-auto">
-    ${scope
-      .map(
-        (f) => `
-      <div class="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <span class="badge badge-blue">${f.relation}</span>
-          ${stars(f.rating)}
-        </div>
-        ${!isEmp ? `<div style="font-weight:700; font-size:13px; margin-bottom:2px;">About: ${empById(f.aboutId).name}</div>` : ""}
-        <div style="font-size:13px; line-height:1.5; color:var(--ink); margin:8px 0;">"${f.comment}"</div>
-        <div style="font-size:11.5px; color:var(--muted);">From ${f.fromName} · ${f.date}</div>
-      </div>
-    `,
-      )
-      .join("")}
-  </div>`;
+        return `<div style="display:flex;align-items:center;gap:10px;margin:28px 0 16px;"><div style="font-weight:800;font-size:16px;white-space:nowrap;">360° Feedback</div><div style="flex:1;height:1px;background:var(--border);"></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;"><div style="color:var(--muted);font-size:13px;">${scope.length} feedback entries · avg rating ${avg}</div>${!isEmp ? `<button class="btn btn-primary" onclick="openModal(giveFeedbackModal())">${iconSvg("feedback")} Give Feedback</button>` : ""}</div>${isEmp ? `<div style="color:var(--muted);font-size:12px;margin-bottom:14px;">Feedback about you is shared by your manager and HR — this space is view-only.</div>` : ""}<div class="grid-cols-auto">${scope.map((f) => `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span class="badge badge-blue">${f.relation}</span>${stars(f.rating)}</div>${!isEmp ? `<div style="font-weight:700;font-size:13px;margin-bottom:2px;">About: ${empById(f.aboutId).name}</div>` : ""}<div style="font-size:13px;line-height:1.5;color:var(--ink);margin:8px 0;">"${f.comment}"</div><div style="font-size:11.5px;color:var(--muted);">From ${f.fromName} · ${f.date}</div></div>`).join("")}</div>`;
       }
       function giveFeedbackModal() {
-        const isEmp = currentRole === "employee";
-        const targets = isEmp
-          ? team.filter((t) => t.id !== currentUsers.employee.id)
-          : currentRole === "manager"
+        const targets =
+          currentRole === "manager"
             ? team.filter((t) => t.id !== "EMP-1005")
             : team;
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Give Feedback</div>
-  <form onsubmit="submitFeedback(event)">
-    <label class="field-label">About</label>
-    <select class="field-select" id="fb-about">${targets.map((t) => `<option value="${t.id}">${t.name}</option>`).join("")}</select>
-    <label class="field-label">Relationship</label>
-    <select class="field-select" id="fb-relation">
-      <option>Peer</option><option>Manager</option><option>Subordinate</option><option>Self</option>
-    </select>
-    <label class="field-label">Rating</label>
-    <select class="field-select" id="fb-rating"><option>5</option><option>4</option><option selected>4</option><option>3</option><option>2</option><option>1</option></select>
-    <label class="field-label">Comments</label>
-    <textarea class="field-textarea" id="fb-comment" placeholder="Share specific, constructive feedback..." required></textarea>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Submit Feedback</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Give Feedback</div><form onsubmit="submitFeedback(event)"><label class="field-label">About</label><select class="field-select" id="fb-about">${targets.map((t) => `<option value="${t.id}">${t.name}</option>`).join("")}</select><label class="field-label">Relationship</label><select class="field-select" id="fb-relation"><option>Manager</option><option>HR</option><option>Peer</option></select><label class="field-label">Rating</label><select class="field-select" id="fb-rating"><option>5</option><option selected>4</option><option>3</option><option>2</option><option>1</option></select><label class="field-label">Comments</label><textarea class="field-textarea" id="fb-comment" placeholder="Share specific, constructive feedback..." required></textarea><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Submit Feedback</button></div></form>`;
       }
       function submitFeedback(e) {
         e.preventDefault();
@@ -2250,210 +2479,183 @@
           date: "Just now",
         });
         closeModal();
-        navigate("feedback");
+        navigate("reviews");
         toast("Feedback submitted");
       }
 
-      /* ============================= SKILLS ============================= */
-      function renderSkills() {
-        if (currentRole === "employee") {
-          const s = mySkills();
-          return `
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-      <div class="card">
-        <div style="font-weight:800; font-size:14.5px; margin-bottom:14px;">Skills Radar</div>
-        ${radarSvg(s)}
-      </div>
-      <div class="card">
-        <div style="font-weight:800; font-size:14.5px; margin-bottom:14px;">Self vs Manager Rating</div>
-        ${s
-          .map(
-            (sk) => `
-          <div style="margin-bottom:14px;">
-            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span style="font-weight:600;">${sk.skill}</span><span style="color:var(--muted);">Self ${sk.self} · Mgr ${sk.mgr}</span></div>
-            <div style="display:flex; gap:4px;">
-              <div class="progress-track" style="flex:1;"><div class="progress-fill" style="width:${sk.self * 20}%; background:#94a3b8;"></div></div>
-              <div class="progress-track" style="flex:1;"><div class="progress-fill" style="width:${sk.mgr * 20}%;"></div></div>
-            </div>
-          </div>
-        `,
-          )
-          .join("")}
-        <button class="btn btn-outline" style="width:100%; justify-content:center; margin-top:8px;" onclick="openModal(selfAssessModal())">Update Self-Assessment</button>
-      </div>
-    </div>`;
-        }
+      function renderCustomerReviews() {
+        const isEmp = currentRole === "employee";
+        const scope = isEmp
+          ? customerReviews.filter(
+              (c) => c.employeeId === currentUsers.employee.id,
+            )
+          : currentRole === "manager"
+            ? customerReviews.filter((c) => teamIds().includes(c.employeeId))
+            : customerReviews;
+        const avg = scope.length
+          ? (scope.reduce((a, c) => a + c.rating, 0) / scope.length).toFixed(1)
+          : "—";
+        return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;"><div style="color:var(--muted);font-size:13px;">${scope.length} customer review${scope.length !== 1 ? "s" : ""} · avg rating ${avg}</div>${!isEmp ? `<button class="btn btn-primary" onclick="openModal(logCustomerReviewModal())">${iconSvg("customer")} Log Customer Review</button>` : ""}</div>${isEmp ? `<div style="color:var(--muted);font-size:12px;margin-bottom:14px;">Reviews shared by customers about your bookings and tours — logged by your manager or HR.</div>` : ""}<div class="grid-cols-auto">${
+          scope.length === 0
+            ? `<div style="color:var(--muted);font-size:13px;">No customer reviews yet.</div>`
+            : scope
+                .map(
+                  (c) =>
+                    `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span class="badge badge-blue">${c.tour}</span>${stars(c.rating)}</div>${!isEmp ? `<div style="font-weight:700;font-size:13px;margin-bottom:2px;">About: ${empById(c.employeeId).name}</div>` : ""}<div style="font-size:13px;line-height:1.5;color:var(--ink);margin:8px 0;">"${c.comment}"</div><div style="font-size:11.5px;color:var(--muted);">From ${c.customerName} · ${c.date}</div></div>`,
+                )
+                .join("")
+        }</div>`;
+      }
+      function logCustomerReviewModal() {
+        const targets =
+          currentRole === "manager"
+            ? team.filter((t) => t.id !== "EMP-1005")
+            : team;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Log Customer Review</div><form onsubmit="submitCustomerReview(event)"><label class="field-label">Employee</label><select class="field-select" id="cr-emp">${targets.map((t) => `<option value="${t.id}">${t.name}</option>`).join("")}</select><label class="field-label">Customer Name</label><input class="field-input" id="cr-customer" placeholder="e.g. Liza Gomez" required><label class="field-label">Tour / Booking</label><input class="field-input" id="cr-tour" placeholder="e.g. Boracay Beach Getaway" required><label class="field-label">Rating</label><select class="field-select" id="cr-rating"><option>5</option><option selected>4</option><option>3</option><option>2</option><option>1</option></select><label class="field-label">Comments</label><textarea class="field-textarea" id="cr-comment" placeholder="What did the customer say..." required></textarea><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Save Review</button></div></form>`;
+      }
+      function submitCustomerReview(e) {
+        e.preventDefault();
+        const employeeId = document.getElementById("cr-emp").value;
+        const customerName = document.getElementById("cr-customer").value;
+        const tour = document.getElementById("cr-tour").value;
+        const rating = Number(document.getElementById("cr-rating").value);
+        const comment = document.getElementById("cr-comment").value;
+        crCounter++;
+        customerReviews.unshift({
+          id: "CR-" + crCounter,
+          employeeId,
+          customerName,
+          tour,
+          rating,
+          comment,
+          date: "Just now",
+        });
+        closeModal();
+        navigate("customerReviews");
+        toast("Customer review logged");
+      }
 
+      function renderSkills() {
         const scope =
           currentRole === "hradmin"
             ? team
             : team.filter((t) => t.id !== "EMP-1005");
         const skillNames = [...new Set(skillsData.map((s) => s.skill))];
-        return `
-  <div class="card" style="padding:0; overflow-x:auto;">
-    <table style="width:100%; border-collapse:collapse; min-width:640px;">
-      <thead>
-        <tr style="background:#f8fafc;">
-          <th style="text-align:left; padding:12px 16px; font-size:11.5px; color:var(--muted); font-weight:700;">EMPLOYEE</th>
-          ${skillNames.map((n) => `<th style="text-align:center; padding:12px 10px; font-size:11px; color:var(--muted); font-weight:700;">${n}</th>`).join("")}
-        </tr>
-      </thead>
-      <tbody>
-      ${scope
-        .map(
-          (emp) => `
-        <tr style="border-top:1px solid var(--border);">
-          <td style="padding:12px 16px; display:flex; align-items:center; gap:10px; font-weight:700; font-size:13px;">
-            <div class="avatar-ring" style="width:28px;height:28px;font-size:10.5px;">${emp.initials}</div>${emp.name}
-          </td>
-          ${skillNames
-            .map((n) => {
-              const sk = skillsData.find(
-                (s) => s.employeeId === emp.id && s.skill === n,
-              );
-              const v = sk ? sk.mgr : 0;
-              const color =
-                v >= 4
-                  ? "var(--green)"
-                  : v >= 3
-                    ? "var(--amber)"
-                    : "var(--red)";
-              return `<td style="text-align:center; padding:12px 10px;"><span style="display:inline-flex; width:26px;height:26px; border-radius:50%; align-items:center; justify-content:center; font-size:11.5px; font-weight:700; color:#fff; background:${sk ? color : "#cbd5e1"};">${sk ? v : "–"}</span></td>`;
-            })
-            .join("")}
-        </tr>
-      `,
-        )
-        .join("")}
-      </tbody>
-    </table>
-  </div>
-  <div style="font-size:11.5px; color:var(--muted); margin-top:10px;">Scores reflect the most recent manager assessment on a 1–5 scale.</div>`;
+        return `<div style="color:var(--muted);font-size:12px;margin-bottom:12px;">Click "Update Ratings" to rate a team member's competencies. Scores are visible to the employee.</div><div class="card" style="padding:0;overflow-x:auto;"><table style="width:100%;border-collapse:collapse;min-width:720px;"><thead><tr style="background:#f8fafc;"><th style="text-align:left;padding:12px 16px;font-size:11.5px;color:var(--muted);font-weight:700;">EMPLOYEE</th>${skillNames.map((n) => `<th style="text-align:center;padding:12px 10px;font-size:11px;color:var(--muted);font-weight:700;">${n}</th>`).join("")}<th style="text-align:right;padding:12px 16px;"></th></tr></thead><tbody>${scope
+          .map(
+            (emp) =>
+              `<tr style="border-top:1px solid var(--border);"><td style="padding:12px 16px;"><div style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:13px;"><div class="avatar-ring" style="width:28px;height:28px;font-size:10.5px;">${emp.initials}</div>${emp.name}</div></td>${skillNames
+                .map((n) => {
+                  const sk = skillsData.find(
+                    (s) => s.employeeId === emp.id && s.skill === n,
+                  );
+                  const v = sk ? sk.mgr : 0;
+                  const color =
+                    v >= 4
+                      ? "var(--green)"
+                      : v >= 3
+                        ? "var(--amber)"
+                        : "var(--red)";
+                  return `<td style="text-align:center;padding:12px 10px;"><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:#fff;background:${sk ? color : "#cbd5e1"};">${sk ? v : "–"}</span></td>`;
+                })
+                .join(
+                  "",
+                )}<td style="padding:12px 16px;text-align:right;"><button class="btn btn-ghost" style="padding:6px 12px;font-size:11.5px;" onclick="openModal(editSkillsModal('${emp.id}'))">Update Ratings</button></td></tr>`,
+          )
+          .join(
+            "",
+          )}</tbody></table></div><div style="font-size:11.5px;color:var(--muted);margin-top:10px;">Scores reflect the most recent manager assessment on a 1–5 scale.</div>`;
       }
-      function radarSvg(skills) {
-        const n = skills.length,
-          cx = 140,
-          cy = 140,
-          r = 105;
-        const pts = skills.map((s, i) => {
-          const ang = (Math.PI * 2 * i) / n - Math.PI / 2;
-          const selfR = r * (s.self / 5),
-            mgrR = r * (s.mgr / 5);
-          return {
-            self: [cx + selfR * Math.cos(ang), cy + selfR * Math.sin(ang)],
-            mgr: [cx + mgrR * Math.cos(ang), cy + mgrR * Math.sin(ang)],
-            label: [
-              cx + (r + 22) * Math.cos(ang),
-              cy + (r + 22) * Math.sin(ang),
-            ],
-            name: s.skill,
-          };
-        });
-        const ring = (frac) =>
-          skills
-            .map((s, i) => {
-              const ang = (Math.PI * 2 * i) / n - Math.PI / 2;
-              return `${cx + r * frac * Math.cos(ang)},${cy + r * frac * Math.sin(ang)}`;
-            })
-            .join(" ");
-        const selfPoly = pts.map((p) => p.self.join(",")).join(" ");
-        const mgrPoly = pts.map((p) => p.mgr.join(",")).join(" ");
-        return `
-  <svg viewBox="0 0 280 300" style="width:100%; max-width:320px; display:block; margin:0 auto;">
-    ${[0.25, 0.5, 0.75, 1].map((f) => `<polygon points="${ring(f)}" fill="none" stroke="#e6ebf2" stroke-width="1"/>`).join("")}
-    <polygon points="${mgrPoly}" fill="rgba(47,111,237,.18)" stroke="var(--accent)" stroke-width="2"/>
-    <polygon points="${selfPoly}" fill="rgba(148,163,184,.15)" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="4 3"/>
-    ${pts.map((p) => `<text x="${p.label[0]}" y="${p.label[1]}" font-size="9.5" fill="#64748b" text-anchor="middle" font-family="Inter">${p.name}</text>`).join("")}
-  </svg>
-  <div style="display:flex; gap:16px; justify-content:center; font-size:11.5px; color:var(--muted);">
-    <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:5px;"></span>Manager</span>
-    <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#94a3b8;margin-right:5px;"></span>Self</span>
-  </div>`;
+
+      function editSkillsModal(empId) {
+        const emp = empById(empId);
+        let rows = skillsData.filter((s) => s.employeeId === empId);
+        if (rows.length === 0) {
+          const names = [...new Set(skillsData.map((s) => s.skill))];
+          names.forEach((n) => {
+            skillsData.push({ employeeId: empId, skill: n, self: 0, mgr: 0 });
+          });
+          rows = skillsData.filter((s) => s.employeeId === empId);
+        }
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:2px;">Update Skill Ratings</div><div style="color:var(--muted);font-size:12.5px;margin-bottom:18px;">${emp.name} · ${emp.position}</div><form onsubmit="submitSkillsEdit(event,'${empId}')">${rows.map((sk, i) => `<div style="margin-bottom:14px;"><label class="field-label">${sk.skill}</label><select class="field-select" id="mgrskill-${i}">${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${sk.mgr === n ? "selected" : ""}>${n}</option>`).join("")}</select></div>`).join("")}<div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Save Ratings</button></div></form>`;
       }
-      function selfAssessModal() {
-        const s = mySkills();
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Update Self-Assessment</div>
-  <form onsubmit="submitSelfAssess(event)">
-    ${s
-      .map(
-        (sk, i) => `
-      <div style="margin-bottom:14px;">
-        <label class="field-label">${sk.skill}</label>
-        <select class="field-select" id="skill-${i}">
-          ${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${sk.self === n ? "selected" : ""}>${n}</option>`).join("")}
-        </select>
-      </div>
-    `,
-      )
-      .join("")}
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Save Assessment</button>
-    </div>
-  </form>`;
-      }
-      function submitSelfAssess(e) {
+      function submitSkillsEdit(e, empId) {
         e.preventDefault();
-        const s = mySkills();
-        s.forEach((sk, i) => {
-          sk.self = Number(document.getElementById("skill-" + i).value);
+        const rows = skillsData.filter((s) => s.employeeId === empId);
+        rows.forEach((sk, i) => {
+          sk.mgr = Number(document.getElementById("mgrskill-" + i).value);
         });
         closeModal();
         navigate("skills");
-        toast("Self-assessment updated");
+        toast("Skill ratings updated");
       }
 
-      /* ============================= REPORTS ============================= */
       let chartInstances = [];
       function renderReports() {
         setTimeout(buildCharts, 30);
         const isHr = currentRole === "hradmin";
-        return `
-  <div class="grid-cols-auto" style="margin-bottom:18px;">
-    <div class="card"><canvas id="chartDept" height="180"></canvas></div>
-    <div class="card"><canvas id="chartTraining" height="180"></canvas></div>
-    <div class="card"><canvas id="chartTrend" height="180"></canvas></div>
+        const pm = periodMeta[reportPeriod];
+        return `<div class="period-row">
+  <div>
+    <div style="font-weight:800;font-size:15px;">${isHr ? "Organization" : "Team"} Report</div>
+    <div style="color:var(--muted);font-size:12px;margin-top:2px;">Showing data for: <strong>${pm.rangeLabel}</strong></div>
+  </div>
+  <div class="period-toggle">
+    <button class="period-btn ${reportPeriod === "weekly" ? "active" : ""}" onclick="setReportPeriod('weekly')">Weekly</button>
+    <button class="period-btn ${reportPeriod === "monthly" ? "active" : ""}" onclick="setReportPeriod('monthly')">Monthly</button>
+    <button class="period-btn ${reportPeriod === "yearly" ? "active" : ""}" onclick="setReportPeriod('yearly')">Yearly</button>
+  </div>
+</div>
+<div class="grid-cols-auto" style="margin-bottom:18px;align-items:stretch;">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-weight:800;font-size:14px;">Goal Progress by Department</div>
+        <div style="color:var(--muted);font-size:11px;margin-top:2px;">Average completion across teams</div>
+      </div>
+      <span class="badge badge-blue" id="deptAvgBadge" style="flex-shrink:0;"></span>
+    </div>
+    <div style="height:224px;margin-top:16px;"><canvas id="chartDept"></canvas></div>
   </div>
   <div class="card">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-      <div style="font-weight:800; font-size:14.5px;">${isHr ? "Organization" : "Team"} Performance Summary</div>
-      <button class="btn btn-outline" style="padding:6px 12px; font-size:11.5px;" onclick="toast('Report exported as PDF')">Export Report</button>
+    <div style="font-weight:800;font-size:14px;">Training Completion</div>
+    <div style="color:var(--muted);font-size:11px;margin-top:2px;margin-bottom:10px;">Status across all enrollments</div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="position:relative;width:130px;height:130px;flex-shrink:0;"><canvas id="chartTraining"></canvas></div>
+      <div id="trainingLegend" style="flex:1;"></div>
     </div>
-    <div style="overflow-x:auto;">
-    <table style="width:100%; border-collapse:collapse; min-width:560px;">
-      <thead><tr style="background:#f8fafc;">
-        <th style="text-align:left; padding:10px 14px; font-size:11px; color:var(--muted);">EMPLOYEE</th>
-        <th style="text-align:left; padding:10px 14px; font-size:11px; color:var(--muted);">DEPARTMENT</th>
-        <th style="text-align:left; padding:10px 14px; font-size:11px; color:var(--muted);">GOAL PROGRESS</th>
-        <th style="text-align:left; padding:10px 14px; font-size:11px; color:var(--muted);">LATEST REVIEW</th>
-      </tr></thead>
-      <tbody>
-      ${(isHr ? team : team.filter((t) => t.id !== "EMP-1005"))
-        .map((emp) => {
-          const eg = goals.filter((g) => g.employeeId === emp.id);
-          const avg = eg.length
-            ? Math.round(eg.reduce((a, g) => a + g.progress, 0) / eg.length)
-            : 0;
-          const rev = reviews.find((r) => r.employeeId === emp.id);
-          return `<tr style="border-top:1px solid var(--border);">
-          <td style="padding:10px 14px; font-weight:700; font-size:13px;">${emp.name}</td>
-          <td style="padding:10px 14px; font-size:12.5px; color:var(--muted);">${emp.dept}</td>
-          <td style="padding:10px 14px; width:160px;"><div class="progress-track"><div class="progress-fill" style="width:${avg}%"></div></div></td>
-          <td style="padding:10px 14px; font-size:12.5px;">${rev && rev.overall ? rev.overall + "/5.0" : "—"}</td>
-        </tr>`;
-        })
-        .join("")}
-      </tbody>
-    </table>
-    </div>
-  </div>`;
+  </div>
+  <div class="card">
+    <div style="font-weight:800;font-size:14px;">Goal Progress Trend</div>
+    <div style="color:var(--muted);font-size:11px;margin-top:2px;margin-bottom:14px;">${pm.trendSubtitle}</div>
+    <div style="height:190px;"><canvas id="chartTrend"></canvas></div>
+  </div>
+</div><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;"><div><div style="font-weight:800;font-size:14.5px;">${isHr ? "Organization" : "Team"} Performance Summary</div><div style="color:var(--muted);font-size:11.5px;margin-top:2px;">${pm.label} report · ${pm.rangeLabel}</div></div><button class="btn btn-outline" style="padding:6px 12px;font-size:11.5px;" onclick="exportReport()">${iconSvg("reports")} Export Report</button></div><div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;min-width:560px;"><thead><tr style="background:#f8fafc;"><th style="text-align:left;padding:10px 14px;font-size:11px;color:var(--muted);">EMPLOYEE</th><th style="text-align:left;padding:10px 14px;font-size:11px;color:var(--muted);">DEPARTMENT</th><th style="text-align:left;padding:10px 14px;font-size:11px;color:var(--muted);">GOAL PROGRESS</th><th style="text-align:left;padding:10px 14px;font-size:11px;color:var(--muted);">LATEST REVIEW</th></tr></thead><tbody>${(isHr
+          ? team
+          : team.filter((t) => t.id !== "EMP-1005")
+        )
+          .map((emp) => {
+            const eg = goals.filter((g) => g.employeeId === emp.id);
+            const avg = eg.length
+              ? Math.round(eg.reduce((a, g) => a + g.progress, 0) / eg.length)
+              : 0;
+            const rev = reviews.find((r) => r.employeeId === emp.id);
+            return `<tr style="border-top:1px solid var(--border);"><td style="padding:10px 14px;font-weight:700;font-size:13px;">${emp.name}</td><td style="padding:10px 14px;font-size:12.5px;color:var(--muted);">${emp.dept}</td><td style="padding:10px 14px;width:160px;"><div class="progress-track"><div class="progress-fill" style="width:${avg}%"></div></div></td><td style="padding:10px 14px;font-size:12.5px;">${rev && rev.overall ? rev.overall + "/5.0" : "—"}</td></tr>`;
+          })
+          .join("")}</tbody></table></div></div>`;
+      }
+      Chart.defaults.font.family = "'DM Sans','Be Vietnam Pro',sans-serif";
+      Chart.defaults.color = "#5b7086";
+      if (typeof ChartDataLabels !== "undefined") {
+        Chart.register(ChartDataLabels);
+        Chart.defaults.set("plugins.datalabels", { display: false });
       }
       function buildCharts() {
         chartInstances.forEach((c) => c.destroy());
         chartInstances = [];
         const deptEl = document.getElementById("chartDept");
         if (!deptEl) return;
+        const deptCtx = deptEl.getContext("2d");
         const depts = [...new Set(team.map((t) => t.dept))];
         const deptAvg = depts.map((d) => {
           const ids = team.filter((t) => t.dept === d).map((t) => t.id);
@@ -2462,34 +2664,105 @@
             ? Math.round(gs.reduce((a, g) => a + g.progress, 0) / gs.length)
             : 0;
         });
+        // wrap long department names onto two lines so labels sit flat (no diagonal text)
+        const deptLabels = depts.map((d) =>
+          d.length > 10 && d.includes(" ") ? d.split(" ") : d,
+        );
+        const overallAvg = Math.round(
+          deptAvg.reduce((a, v) => a + v, 0) / deptAvg.length,
+        );
+        const deptBadgeEl = document.getElementById("deptAvgBadge");
+        if (deptBadgeEl) deptBadgeEl.textContent = overallAvg + "% avg";
+        // per-bar gradient, richer navy-to-teal, plus a distinct tone for the top performer
+        const topIdx = deptAvg.indexOf(Math.max(...deptAvg));
+        const barColors = deptAvg.map((v, i) => {
+          const g = deptCtx.createLinearGradient(0, 0, 0, 224);
+          if (i === topIdx) {
+            g.addColorStop(0, "#1d6fb8");
+            g.addColorStop(1, "#5fc4d6");
+          } else {
+            g.addColorStop(0, "#2f94dc");
+            g.addColorStop(1, "#a9dcf0");
+          }
+          return g;
+        });
         chartInstances.push(
           new Chart(deptEl, {
             type: "bar",
             data: {
-              labels: depts,
+              labels: deptLabels,
               datasets: [
                 {
-                  label: "Avg Goal Progress %",
+                  label: "Avg Goal Progress",
                   data: deptAvg,
-                  backgroundColor: "#2f6fed",
-                  borderRadius: 6,
+                  backgroundColor: barColors,
+                  borderRadius: { topLeft: 8, topRight: 8 },
+                  borderSkipped: false,
+                  maxBarThickness: 46,
+                  categoryPercentage: 0.62,
+                  barPercentage: 0.9,
                 },
               ],
             },
             options: {
+              maintainAspectRatio: false,
+              layout: { padding: { top: 22 } },
+              animation: { duration: 700, easing: "easeOutQuart" },
               plugins: {
                 legend: { display: false },
-                title: {
+                datalabels: {
                   display: true,
-                  text: "Goal Progress by Department",
-                  font: { size: 12.5, weight: "700" },
+                  anchor: "end",
+                  align: "top",
+                  offset: 2,
+                  color: "#0a1622",
+                  font: { size: 12, weight: "800" },
+                  formatter: (v) => v + "%",
+                },
+                tooltip: {
+                  backgroundColor: "#07203c",
+                  padding: 10,
+                  cornerRadius: 8,
+                  displayColors: false,
+                  titleFont: { size: 12, weight: "700" },
+                  bodyFont: { size: 12 },
+                  callbacks: {
+                    title: (items) =>
+                      Array.isArray(items[0].label)
+                        ? items[0].label.join(" ")
+                        : items[0].label,
+                    label: (ctx) => ` ${ctx.parsed.y}% average progress`,
+                  },
                 },
               },
-              scales: { y: { beginAtZero: true, max: 100 } },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  ticks: {
+                    stepSize: 25,
+                    callback: (v) => v + "%",
+                    font: { size: 10.5 },
+                    color: "#94a7ba",
+                  },
+                  grid: { color: "#eef2f6" },
+                  border: { display: false },
+                },
+                x: {
+                  grid: { display: false },
+                  border: { display: false },
+                  ticks: {
+                    maxRotation: 0,
+                    minRotation: 0,
+                    autoSkip: false,
+                    font: { size: 11, weight: "700" },
+                    color: "#3c4d60",
+                  },
+                },
+              },
             },
           }),
         );
-
         const done = enrollments.filter((e) => e.status === "Completed").length;
         const prog = enrollments.filter(
           (e) => e.status === "In Progress",
@@ -2497,159 +2770,361 @@
         const notStarted = enrollments.filter(
           (e) => e.status === "Not Started",
         ).length;
+        const trainingColors = ["#16a34a", "#2f94dc", "#dbe4ec"];
+        const trainingLabels = ["Completed", "In Progress", "Not Started"];
+        const trainingData = [done, prog, notStarted];
+        const totalEnroll = done + prog + notStarted;
         chartInstances.push(
           new Chart(document.getElementById("chartTraining"), {
             type: "doughnut",
             data: {
-              labels: ["Completed", "In Progress", "Not Started"],
+              labels: trainingLabels,
               datasets: [
                 {
-                  data: [done, prog, notStarted],
-                  backgroundColor: ["#16a34a", "#2f6fed", "#cbd5e1"],
+                  data: trainingData,
+                  backgroundColor: trainingColors,
+                  borderWidth: 3,
+                  borderColor: "#fff",
+                  hoverOffset: 4,
                 },
               ],
             },
             options: {
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Training Completion",
-                  font: { size: 12.5, weight: "700" },
-                },
-              },
-            },
-          }),
-        );
-
-        chartInstances.push(
-          new Chart(document.getElementById("chartTrend"), {
-            type: "line",
-            data: {
-              labels: ["Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-              datasets: [
-                {
-                  label: "Avg Goal Progress %",
-                  data: [48, 55, 60, 66, 74, 79],
-                  borderColor: "#1fb6a6",
-                  backgroundColor: "rgba(31,182,166,.15)",
-                  fill: true,
-                  tension: 0.35,
-                },
-              ],
-            },
-            options: {
+              maintainAspectRatio: false,
+              cutout: "72%",
               plugins: {
                 legend: { display: false },
-                title: {
-                  display: true,
-                  text: "Goal Progress Trend",
-                  font: { size: 12.5, weight: "700" },
+                tooltip: {
+                  backgroundColor: "#07203c",
+                  padding: 10,
+                  cornerRadius: 8,
                 },
               },
-              scales: { y: { beginAtZero: true, max: 100 } },
+            },
+            plugins: [
+              {
+                id: "centerText",
+                afterDraw(chart) {
+                  const { ctx, chartArea } = chart;
+                  const cx = (chartArea.left + chartArea.right) / 2;
+                  const cy = (chartArea.top + chartArea.bottom) / 2;
+                  ctx.save();
+                  ctx.textAlign = "center";
+                  ctx.textBaseline = "middle";
+                  ctx.font = "800 22px 'Be Vietnam Pro', sans-serif";
+                  ctx.fillStyle = "#0a1622";
+                  ctx.fillText(String(totalEnroll), cx, cy - 8);
+                  ctx.font = "600 10px 'DM Sans', sans-serif";
+                  ctx.fillStyle = "#5b7086";
+                  ctx.fillText("ENROLLED", cx, cy + 12);
+                  ctx.restore();
+                },
+              },
+            ],
+          }),
+        );
+        const legendEl = document.getElementById("trainingLegend");
+        if (legendEl) {
+          legendEl.innerHTML = trainingLabels
+            .map(
+              (l, i) =>
+                `<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><span style="width:9px;height:9px;border-radius:3px;background:${trainingColors[i]};flex-shrink:0;"></span><span style="font-size:12px;font-weight:600;flex:1;">${l}</span><span style="font-size:12.5px;font-weight:800;">${trainingData[i]}</span></div>`,
+            )
+            .join("");
+        }
+        const trendEl = document.getElementById("chartTrend");
+        const trendCtx = trendEl.getContext("2d");
+        const trendGradient = trendCtx.createLinearGradient(0, 0, 0, 190);
+        trendGradient.addColorStop(0, "rgba(47,148,220,.28)");
+        trendGradient.addColorStop(1, "rgba(47,148,220,0)");
+        const pmTrend = periodMeta[reportPeriod];
+        chartInstances.push(
+          new Chart(trendEl, {
+            type: "line",
+            data: {
+              labels: pmTrend.trendLabels,
+              datasets: [
+                {
+                  label: "Avg Goal Progress",
+                  data: pmTrend.trendData,
+                  borderColor: "#2f94dc",
+                  backgroundColor: trendGradient,
+                  fill: true,
+                  tension: 0.4,
+                  borderWidth: 2.5,
+                  pointRadius: 3.5,
+                  pointBackgroundColor: "#fff",
+                  pointBorderColor: "#2f94dc",
+                  pointBorderWidth: 2,
+                  pointHoverRadius: 5.5,
+                },
+              ],
+            },
+            options: {
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  backgroundColor: "#07203c",
+                  padding: 10,
+                  cornerRadius: 8,
+                  callbacks: {
+                    label: (ctx) => ` ${ctx.parsed.y}% average progress`,
+                  },
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  ticks: { callback: (v) => v + "%", font: { size: 10.5 } },
+                  grid: { color: "#eef2f6" },
+                  border: { display: false },
+                },
+                x: {
+                  grid: { display: false },
+                  border: { display: false },
+                  ticks: { font: { size: 10.5, weight: "600" } },
+                },
+              },
             },
           }),
         );
       }
 
-      /* ============================= PEOPLE (Manager/HR) ============================= */
+      function generateReportHTML(period) {
+        const isHr = currentRole === "hradmin";
+        const pm = periodMeta[period];
+        const scopeTeam = isHr ? team : team.filter((t) => t.id !== "EMP-1005");
+        const scopeGoals = isHr
+          ? goals
+          : goals.filter((g) => teamIds().includes(g.employeeId));
+        const avgGoal = scopeGoals.length
+          ? Math.round(
+              scopeGoals.reduce((a, g) => a + g.progress, 0) /
+                scopeGoals.length,
+            )
+          : 0;
+        const completedReviews = reviews.filter(
+          (r) => r.status === "Completed",
+        ).length;
+        const atRisk = scopeGoals.filter((g) => g.status === "At Risk").length;
+        const done = enrollments.filter((e) => e.status === "Completed").length;
+        const depts = [...new Set(scopeTeam.map((t) => t.dept))];
+        const deptRows = depts.map((d) => {
+          const ids = scopeTeam.filter((t) => t.dept === d).map((t) => t.id);
+          const gs = goals.filter((g) => ids.includes(g.employeeId));
+          const avg = gs.length
+            ? Math.round(gs.reduce((a, g) => a + g.progress, 0) / gs.length)
+            : 0;
+          return { d, avg };
+        });
+        const empRows = scopeTeam.map((emp) => {
+          const eg = goals.filter((g) => g.employeeId === emp.id);
+          const avg = eg.length
+            ? Math.round(eg.reduce((a, g) => a + g.progress, 0) / eg.length)
+            : 0;
+          const rev = reviews.find((r) => r.employeeId === emp.id);
+          return { emp, avg, rev };
+        });
+        const now = new Date();
+        const generatedStr = now.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
+        const preparedBy = currentUsers[currentRole].name;
+        return `
+<div style="font-family:'DM Sans','Be Vietnam Pro',sans-serif;color:#0a1622;max-width:900px;margin:0 auto;padding:36px 40px;">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #07203c;padding-bottom:16px;margin-bottom:22px;">
+    <div>
+      <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.03em;color:#07203c;">CENTINEL HR</div>
+      <div style="font-size:11px;letter-spacing:0.12em;color:#2f94dc;font-weight:700;margin-top:2px;">PERFORMANCE &amp; DEVELOPMENT REPORT</div>
+    </div>
+    <div style="text-align:right;font-size:11.5px;color:#5b7086;line-height:1.6;">
+      <div><strong style="color:#0a1622;">${pm.label} Report</strong></div>
+      <div>Period: ${pm.rangeLabel}</div>
+      <div>Generated: ${generatedStr}</div>
+      <div>Prepared by: ${preparedBy}</div>
+    </div>
+  </div>
+
+  <div style="font-size:15px;font-weight:800;margin-bottom:10px;">${isHr ? "Organization" : "Team"} Summary</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;">
+    <div style="border:1px solid #e3ecf5;border-radius:8px;padding:12px;">
+      <div style="font-size:10px;color:#5b7086;font-weight:700;letter-spacing:0.04em;">${isHr ? "EMPLOYEES" : "TEAM SIZE"}</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;">${scopeTeam.length}</div>
+    </div>
+    <div style="border:1px solid #e3ecf5;border-radius:8px;padding:12px;">
+      <div style="font-size:10px;color:#5b7086;font-weight:700;letter-spacing:0.04em;">AVG GOAL PROGRESS</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;">${avgGoal}%</div>
+    </div>
+    <div style="border:1px solid #e3ecf5;border-radius:8px;padding:12px;">
+      <div style="font-size:10px;color:#5b7086;font-weight:700;letter-spacing:0.04em;">REVIEWS COMPLETED</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;">${completedReviews} / ${reviews.length}</div>
+    </div>
+    <div style="border:1px solid #e3ecf5;border-radius:8px;padding:12px;">
+      <div style="font-size:10px;color:#5b7086;font-weight:700;letter-spacing:0.04em;">GOALS AT RISK</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;color:${atRisk > 0 ? "#d97706" : "#0a1622"};">${atRisk}</div>
+    </div>
+  </div>
+
+  <div style="font-size:15px;font-weight:800;margin-bottom:10px;">Goal Progress by Department</div>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:26px;font-size:12.5px;">
+    <thead>
+      <tr style="background:#f8fafc;">
+        <th style="text-align:left;padding:8px 10px;border:1px solid #e3ecf5;color:#5b7086;font-size:10.5px;">DEPARTMENT</th>
+        <th style="text-align:left;padding:8px 10px;border:1px solid #e3ecf5;color:#5b7086;font-size:10.5px;">AVG GOAL PROGRESS</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${deptRows
+        .map(
+          (r) =>
+            `<tr><td style="padding:8px 10px;border:1px solid #e3ecf5;font-weight:600;">${r.d}</td><td style="padding:8px 10px;border:1px solid #e3ecf5;">${r.avg}%</td></tr>`,
+        )
+        .join("")}
+    </tbody>
+  </table>
+
+  <div style="font-size:15px;font-weight:800;margin-bottom:10px;">Employee Performance Detail</div>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:26px;font-size:12.5px;">
+    <thead>
+      <tr style="background:#f8fafc;">
+        <th style="text-align:left;padding:8px 10px;border:1px solid #e3ecf5;color:#5b7086;font-size:10.5px;">EMPLOYEE</th>
+        <th style="text-align:left;padding:8px 10px;border:1px solid #e3ecf5;color:#5b7086;font-size:10.5px;">DEPARTMENT</th>
+        <th style="text-align:left;padding:8px 10px;border:1px solid #e3ecf5;color:#5b7086;font-size:10.5px;">GOAL PROGRESS</th>
+        <th style="text-align:left;padding:8px 10px;border:1px solid #e3ecf5;color:#5b7086;font-size:10.5px;">LATEST REVIEW</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${empRows
+        .map(
+          (r) =>
+            `<tr><td style="padding:8px 10px;border:1px solid #e3ecf5;font-weight:600;">${r.emp.name}</td><td style="padding:8px 10px;border:1px solid #e3ecf5;">${r.emp.dept}</td><td style="padding:8px 10px;border:1px solid #e3ecf5;">${r.avg}%</td><td style="padding:8px 10px;border:1px solid #e3ecf5;">${r.rev && r.rev.overall ? r.rev.overall + "/5.0" : "—"}</td></tr>`,
+        )
+        .join("")}
+    </tbody>
+  </table>
+
+  <div style="font-size:10.5px;color:#94a3b8;border-top:1px solid #e3ecf5;padding-top:12px;margin-top:8px;">
+    Confidential — Centinel HR internal document. This report reflects data captured as of ${generatedStr} and is intended for internal performance management use only.
+  </div>
+</div>`;
+      }
+      function exportReport() {
+        const area = document.getElementById("printReportArea");
+        area.innerHTML = generateReportHTML(reportPeriod);
+        area.style.display = "block";
+        setTimeout(() => window.print(), 50);
+        toast("Report ready — use the print dialog to save as PDF");
+      }
+      window.addEventListener("afterprint", () => {
+        const area = document.getElementById("printReportArea");
+        if (area) area.style.display = "none";
+      });
+
       function renderPeople() {
         const scope =
           currentRole === "hradmin"
             ? team
             : team.filter((t) => t.id !== "EMP-1005");
-        return `
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-    <div style="color:var(--muted); font-size:13px;">${scope.length} people</div>
-    ${currentRole === "hradmin" ? `<button class="btn btn-primary" onclick="openModal(addEmployeeModal())">${iconSvg("people")} Add Employee</button>` : ""}
-  </div>
-  <div class="grid-cols-auto">
-    ${scope
-      .map((emp) => {
-        const eg = goals.filter((g) => g.employeeId === emp.id);
-        const avg = eg.length
-          ? Math.round(eg.reduce((a, g) => a + g.progress, 0) / eg.length)
-          : 0;
-        const rev = reviews.find((r) => r.employeeId === emp.id);
-        return `<div class="card">
-        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-          <div class="avatar-ring" style="width:44px;height:44px;font-size:15px;">${emp.initials}</div>
-          <div>
-            <div style="font-weight:700; font-size:14px;">${emp.name}</div>
-            <div style="font-size:11.5px; color:var(--muted);">${emp.position}</div>
-          </div>
-        </div>
-        <div style="font-size:11.5px; color:var(--muted); margin-bottom:4px;">Goal Progress</div>
-        <div class="progress-track" style="margin-bottom:10px;"><div class="progress-fill" style="width:${avg}%"></div></div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="badge badge-grey">${emp.dept}</span>
-          ${rev ? statusBadge(rev.status) : ""}
-        </div>
-      </div>`;
-      })
-      .join("")}
-  </div>`;
+        return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;"><div style="color:var(--muted);font-size:13px;">${scope.length} people</div>${currentRole === "hradmin" ? `<button class="btn btn-primary" onclick="openModal(addEmployeeModal())">${iconSvg("people")} Add Employee</button>` : ""}</div><div class="grid-cols-auto">${scope
+          .map((emp) => {
+            const eg = goals.filter((g) => g.employeeId === emp.id);
+            const avg = eg.length
+              ? Math.round(eg.reduce((a, g) => a + g.progress, 0) / eg.length)
+              : 0;
+            const rev = reviews.find((r) => r.employeeId === emp.id);
+            return `<div class="card"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><div class="avatar-ring" style="width:44px;height:44px;font-size:15px;">${emp.initials}</div><div><div style="font-weight:700;font-size:14px;">${emp.name}</div><div style="font-size:11.5px;color:var(--muted);">${emp.position}</div></div></div><div style="font-size:11.5px;color:var(--muted);margin-bottom:4px;">Goal Progress</div><div class="progress-track" style="margin-bottom:10px;"><div class="progress-fill" style="width:${avg}%"></div></div><div style="display:flex;justify-content:space-between;align-items:center;"><span class="badge badge-grey">${emp.dept}</span>${rev ? statusBadge(rev.status) : ""}</div></div>`;
+          })
+          .join("")}</div>`;
       }
       function addEmployeeModal() {
-        return `
-  <div style="font-weight:800; font-size:16px; margin-bottom:18px;">Add Employee</div>
-  <form onsubmit="event.preventDefault(); closeModal(); toast('Employee added');">
-    <div style="display:flex; gap:10px;">
-      <input class="field-input" placeholder="First Name" required>
-      <input class="field-input" placeholder="Last Name" required>
-    </div>
-    <label class="field-label">Position</label>
-    <input class="field-input" placeholder="e.g. Tour Coordinator" required>
-    <label class="field-label">Department</label>
-    <select class="field-select"><option>Sales & Bookings</option><option>Operations</option><option>Support</option><option>Partnerships</option><option>Human Resources</option></select>
-    <label class="field-label">Reports To</label>
-    <select class="field-select">${team.map((t) => `<option>${t.name}</option>`).join("")}</select>
-    <div style="display:flex; gap:10px; margin-top:6px;">
-      <button type="button" class="btn btn-ghost" style="flex:1; justify-content:center;" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Add Employee</button>
-    </div>
-  </form>`;
+        return `<div style="font-weight:800;font-size:16px;margin-bottom:18px;">Add Employee</div><form onsubmit="event.preventDefault();closeModal();toast('Employee added');"><div style="display:flex;gap:10px;"><input class="field-input" placeholder="First Name" required><input class="field-input" placeholder="Last Name" required></div><label class="field-label">Position</label><input class="field-input" placeholder="e.g. Tour Coordinator" required><label class="field-label">Department</label><select class="field-select"><option>Sales & Bookings</option><option>Operations</option><option>Support</option><option>Partnerships</option><option>Human Resources</option></select><label class="field-label">Reports To</label><select class="field-select">${team.map((t) => `<option>${t.name}</option>`).join("")}</select><div style="display:flex;gap:10px;margin-top:6px;"><button type="button" class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Add Employee</button></div></form>`;
       }
 
-      /* ============================= SETTINGS / PROFILE ============================= */
       function renderSettings() {
-        return `
-  <div class="card" style="max-width:640px;">
-    <div style="font-weight:800; font-size:15px; margin-bottom:16px;">Review Cycle Settings</div>
-    <label class="field-label">Default Rating Scale</label>
-    <select class="field-select"><option>1–5 Scale</option><option>1–10 Scale</option><option>Pass / Needs Improvement</option></select>
-    <label class="field-label">Review Frequency</label>
-    <select class="field-select"><option>Semi-Annual</option><option>Annual</option><option>Quarterly</option></select>
-    <label style="display:flex; align-items:center; gap:8px; font-size:13px; margin-bottom:14px;"><input type="checkbox" checked> Automatically remind managers of overdue reviews</label>
-    <label style="display:flex; align-items:center; gap:8px; font-size:13px; margin-bottom:14px;"><input type="checkbox" checked> Allow employees to self-assess skills</label>
-    <label style="display:flex; align-items:center; gap:8px; font-size:13px; margin-bottom:20px;"><input type="checkbox"> Make peer feedback anonymous by default</label>
-    <button class="btn btn-primary" onclick="toast('Settings saved')">Save Settings</button>
-  </div>`;
+        return `<div class="card" style="max-width:640px;"><div style="font-weight:800;font-size:15px;margin-bottom:16px;">Review Cycle Settings</div><label class="field-label">Default Rating Scale</label><select class="field-select"><option>1–5 Scale</option><option>1–10 Scale</option><option>Pass / Needs Improvement</option></select><label class="field-label">Review Frequency</label><select class="field-select"><option>Semi-Annual</option><option>Annual</option><option>Quarterly</option></select><label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:14px;"><input type="checkbox" checked> Automatically remind managers of overdue reviews</label><label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:14px;"><input type="checkbox" checked> Managers set skill ratings for their team</label><label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:20px;"><input type="checkbox"> Make peer feedback anonymous by default</label><button class="btn btn-primary" onclick="toast('Settings saved')">Save Settings</button></div>`;
       }
+
+      let profileEditMode = false;
       function renderProfile() {
         const u = currentUsers[currentRole];
-        return `
-  <div class="card" style="max-width:640px;">
-    <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
-      <div class="avatar" style="width:64px;height:64px;font-size:20px;">${u.initials}</div>
+        const lockIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>`;
+        const editing = profileEditMode;
+        return `<div style="display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:start;max-width:1180px;">
+
+  <!-- LEFT CARD: Photo + system-locked fields -->
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+      <div class="profile-photo-wrap">
+        <div class="profile-photo" id="profilePhotoEl" style="${avatarStyle(u.photo)}">${u.photo ? "" : u.initials}</div>
+        <div class="profile-photo-edit" onclick="document.getElementById('photoFileInput').click()" title="Change photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </div>
+      </div>
       <div>
-        <div style="font-weight:800; font-size:18px;">${u.name}</div>
-        <div style="color:var(--muted); font-size:13px;">${u.position} · ${u.dept}</div>
+        <div style="font-weight:800;font-size:18px;line-height:1.2;">${u.name}</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:2px;">${u.position}</div>
+        <div style="color:var(--muted);font-size:11.5px;margin-top:1px;">${u.dept} · ${u.roleLabel}</div>
       </div>
     </div>
-    <label class="field-label">Full Name</label>
-    <input class="field-input" value="${u.name}" disabled>
-    <label class="field-label">Employee ID</label>
-    <input class="field-input" value="${u.id}" disabled>
-    <label class="field-label">Department</label>
-    <input class="field-input" value="${u.dept}" disabled>
-    <label class="field-label">Position</label>
-    <input class="field-input" value="${u.position}" disabled>
-    <button class="btn btn-outline" onclick="toast('Edit profile coming soon')">Edit Profile</button>
-  </div>`;
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12px;">
+      <div class="locked-field"><label class="field-label">First Name</label><div class="locked-input-wrap"><input class="field-input" value="${u.firstName}" disabled>${lockIcon}</div></div>
+      <div class="locked-field"><label class="field-label">Middle Name</label><div class="locked-input-wrap"><input class="field-input" value="${u.middleName}" disabled>${lockIcon}</div></div>
+    </div>
+    <div class="locked-field" style="margin-top:10px;"><label class="field-label">Last Name</label><div class="locked-input-wrap"><input class="field-input" value="${u.lastName}" disabled>${lockIcon}</div></div>
+    <div class="locked-field" style="margin-top:10px;"><label class="field-label">Employee ID</label><div class="locked-input-wrap"><input class="field-input" value="${u.id}" disabled>${lockIcon}</div></div>
+    <div class="locked-field" style="margin-top:10px;"><label class="field-label">Department</label><div class="locked-input-wrap"><input class="field-input" value="${u.dept}" disabled>${lockIcon}</div></div>
+    <div class="locked-field" style="margin-top:10px;"><label class="field-label">Position</label><div class="locked-input-wrap"><input class="field-input" value="${u.position}" disabled>${lockIcon}</div></div>
+  </div>
+
+  <!-- RIGHT CARD: Editable fields -->
+  <div class="card">
+    <div class="profile-section-label" style="margin-top:0;margin-bottom:16px;">Your Details</div>
+    <label class="field-label">Email</label>
+    <input class="field-input" id="profEmail" value="${u.email}" ${editing ? "" : "disabled"}>
+    <label class="field-label">Phone Number</label>
+    <input class="field-input" id="profPhone" value="${u.phone}" ${editing ? "" : "disabled"}>
+    <label class="field-label">About / Bio</label>
+    <textarea class="field-textarea" id="profBio" style="min-height:100px;" ${editing ? "" : "disabled"}>${u.bio}</textarea>
+    ${editing ? `<div style="display:flex;gap:10px;margin-top:6px;"><button class="btn btn-ghost" style="flex:1;justify-content:center;" onclick="cancelEditProfile()">Cancel</button><button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="saveProfile()">Save Changes</button></div>` : `<button class="btn btn-outline" onclick="startEditProfile()">Edit Profile</button>`}
+  </div>
+
+</div>`;
+      }
+      function startEditProfile() {
+        profileEditMode = true;
+        navigate("profile");
+      }
+      function cancelEditProfile() {
+        profileEditMode = false;
+        navigate("profile");
+      }
+      function saveProfile() {
+        const u = currentUsers[currentRole];
+        u.email = document.getElementById("profEmail").value;
+        u.phone = document.getElementById("profPhone").value;
+        u.bio = document.getElementById("profBio").value;
+        profileEditMode = false;
+        navigate("profile");
+        toast("Profile updated");
+      }
+      function handlePhotoFile(evt) {
+        const file = evt.target.files && evt.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          currentUsers[currentRole].photo = e.target.result;
+          renderShell();
+          navigate("profile");
+          toast("Profile photo updated");
+        };
+        reader.readAsDataURL(file);
+        evt.target.value = "";
       }
 
-      /* ============================= INIT ============================= */
       navigate("dashboard");
     </script>
   </body>
